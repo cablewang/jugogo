@@ -1,0 +1,1709 @@
+2012/07/02 23:41:33 [error] [php] Undefined index: model (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:77)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/create/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (77)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/02 23:43:42 [error] [php] Undefined index: model (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:77)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/create/model=users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (77)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/02 23:44:07 [error] [php] Undefined index: model (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:77)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/create/model:users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (77)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/02 23:44:22 [error] [php] Undefined index: model (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:77)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/create/model=users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (77)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/02 23:44:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "list".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('list')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('list')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/list')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/users
+---
+2012/07/02 23:45:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "users".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('users')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('users')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/users')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/users/12345
+---
+2012/07/02 23:47:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "users".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('users')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('users')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/users/id=12...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/users/id=12345&password=12345&email=12345@md.com
+---
+2012/07/02 23:48:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "users".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('users')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('users')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/users')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/users/12345
+---
+2012/07/02 23:48:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "list".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('list')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('list')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/list')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/users
+---
+2012/07/03 00:05:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "users".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('users')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('users')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/users/id=12...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/users/id=1234
+---
+2012/07/04 10:47:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "list".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('list')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('list')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/list')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/users
+---
+2012/07/04 10:47:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "list".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('list')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('list')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/list')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/users
+---
+2012/07/04 10:48:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "list".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('list')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('list')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/list')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/users/
+---
+2012/07/04 10:51:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "list".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('list')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('list')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/list')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/users
+---
+2012/07/04 10:52:19 [error] [php] include(CJON.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (/Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/YiiBase.php:418)
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php(48): spl_autoload_call()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionList()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#8 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (48)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 10:59:57 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:99)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (99)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 11:13:05 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:99)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (99)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 11:16:30 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:99)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (99)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 11:18:27 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:99)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (99)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 13:27:22 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:99)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (99)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 13:32:04 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:101)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (101)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 13:33:25 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:102)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (102)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 14:24:21 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:102)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (102)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 14:26:29 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:102)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (102)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 14:33:33 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:102)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (102)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 14:37:10 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:102)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (102)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 14:38:31 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:102)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (102)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 14:38:56 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:102)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (102)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 14:41:59 [error] [php] Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:87) (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:198)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#7 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (198)
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (99)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 15:12:16 [error] [php] Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:87) (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:199)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#7 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (199)
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (95)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 15:13:30 [error] [php] Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:87) (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:199)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#7 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (199)
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (100)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 15:16:37 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'kaibo.wang@hotmail.com' for key 'email'. The SQL statement executed was: UPDATE `jgg_user` SET `id`=:yp0, `password`=:yp1, `email`=:yp2, `state`=:yp3, `state_change_reason`=:yp4, `state_change_time`=:yp5, `create_time`=:yp6, `reg_time`=:yp7, `last_login_time`=:yp8, `score`=:yp9, `storage_size`=:yp10, `storage_usage`=:yp11, `last_update_time`=:yp12 WHERE `jgg_user`.`id`=1.
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (141)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 15:16:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'kaibo.wang@hotmail.com' for key 'email'. The SQL statement executed was: UPDATE `jgg_user` SET `id`=:yp0, `password`=:yp1, `email`=:yp2, `state`=:yp3, `state_change_reason`=:yp4, `state_change_time`=:yp5, `create_time`=:yp6, `reg_time`=:yp7, `last_login_time`=:yp8, `score`=:yp9, `storage_size`=:yp10, `storage_usage`=:yp11, `last_update_time`=:yp12 WHERE `jgg_user`.`id`=1' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbCommand.php:354
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(1681): CDbCommand->execute()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(1061): CActiveRecord->updateByPk('1', Array)
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(787): CActiveRecord->update(NULL)
+#3 /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php(141): CActiveRecord->save()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionUpdate()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('update')
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/update')
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/jugaogao/index.php/api/users/1
+---
+2012/07/04 15:37:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "users".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('users')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('users')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/users')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/users/1
+---
+2012/07/04 15:38:06 [error] [php] Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:92) (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:208)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#7 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users/
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (208)
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (105)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/04 15:42:08 [error] [php] Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:91) (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:207)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): ApiController->runAction()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#7 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users/
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (207)
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (104)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/08 09:16:48 [error] [php] require_once(Logging.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:3)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(270): CWebApplication->createController()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#3 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (3)
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (3)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/08 09:18:10 [error] [php] require_once(Logging.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:3)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(270): CWebApplication->createController()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#3 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (3)
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (3)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/08 01:18:57 [error] [php] Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:147) (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:257)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (257)
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (155)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/08 01:40:36 [error] [php] Use of undefined constant i - assumed 'i' (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:149)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (149)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/08 01:41:01 [error] [php] Undefined offset: 0 (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:149)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (149)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/10 10:39:59 [error] [exception.CException] exception 'CException' with message 'RestController and its behaviors do not have a method or closure named "_getStatusCodeMessage".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CComponent.php:266
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/RestController.php(73): CComponent->__call('_getStatusCodeM...', Array)
+#1 /Applications/MAMP/htdocs/jugaogao/protected/controllers/RestController.php(73): RestController->_getStatusCodeMessage(500)
+#2 /Applications/MAMP/htdocs/jugaogao/protected/controllers/RestController.php(66): RestController->_sendResponse(500, 'can't create ac...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): RestController->actionAuthkey()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('authkey')
+#13 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('rest/authkey')
+#14 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#15 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/jugaogao/index.php/api/authkey/550e8400e29b41d4a716446655440000
+---
+2012/07/10 11:23:02 [error] [php] json_encode() [<a href='function.json-encode'>function.json-encode</a>]: Invalid UTF-8 sequence in argument (/Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/helpers/CJSON.php:117)
+Stack trace:
+#0 unknown(0): nameValue()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/helpers/CJSON.php(247): array_map()
+#2 /Applications/MAMP/htdocs/jugaogao/protected/controllers/RestController.php(68): encode()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): RestController->actionAuthkey()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): RestController->runAction()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): RestController->filterAccessControl()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): RestController->runActionWithFilters()
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): RestController->run()
+#13 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#14 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#15 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/authkey/550e8400e29b41d4a716446655440001
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/RestController.php (68)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/10 16:15:58 [error] [php] include(Subject.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (/Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/YiiBase.php:418)
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php(133): spl_autoload_call()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#13 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (133)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 09:58:00 [error] [php] include(Subject.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (/Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/YiiBase.php:418)
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php(133): spl_autoload_call()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#13 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (133)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 10:32:00 [error] [php] include(Subject.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (/Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/YiiBase.php:418)
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php(133): spl_autoload_call()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#13 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (133)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 10:38:26 [error] [php] Invalid argument supplied for foreach() (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:128)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (128)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 10:39:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "users".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('users')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('users')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/users')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/users
+---
+2012/07/11 10:42:35 [error] [php] Invalid argument supplied for foreach() (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:128)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (128)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 14:33:02 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:199)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (199)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 14:38:15 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:199)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (199)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 15:04:15 [error] [php] Undefined index: wrap (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:128)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (128)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 15:11:00 [error] [php] Undefined index: wrap (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:128)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (128)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 15:15:07 [error] [php] Undefined index: wrap (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:128)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (128)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 15:25:28 [error] [php] Undefined index: wrap (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:128)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (128)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 15:26:17 [error] [php] Undefined index: wrap (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:128)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (128)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 15:39:27 [error] [php] include(Subject.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (/Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/YiiBase.php:418)
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php(144): spl_autoload_call()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#13 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (144)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 15:58:07 [error] [php] include(Subject.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (/Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/YiiBase.php:418)
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php(145): spl_autoload_call()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#13 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (145)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 15:59:33 [error] [php] include(Subject.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (/Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/YiiBase.php:418)
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php(146): spl_autoload_call()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#13 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (146)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 16:01:18 [error] [php] include(Subject.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (/Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/YiiBase.php:418)
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php(146): spl_autoload_call()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#13 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (146)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 16:02:31 [error] [php] include(Subject.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (/Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/YiiBase.php:418)
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php(146): spl_autoload_call()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#13 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (146)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 08:09:56 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:198)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (198)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 10:18:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1@test.com' for key 'email'. The SQL statement executed was: INSERT INTO `jgg_user` (`password`, `email`, `state`, `create_time`) VALUES (:yp0, :yp1, :yp2, NOW()).
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (185)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 10:18:45 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1@test.com' for key 'email'. The SQL statement executed was: INSERT INTO `jgg_user` (`password`, `email`, `state`, `create_time`) VALUES (:yp0, :yp1, :yp2, NOW())' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbCommand.php:354
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(1014): CDbCommand->execute()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(787): CActiveRecord->insert(NULL)
+#2 /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php(185): CActiveRecord->save()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('create')
+#13 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/create')
+#14 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#15 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/jugaogao/index.php/api/users
+---
+2012/07/11 10:41:30 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:208)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (208)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 18:45:02 [error] [php] Invalid argument supplied for foreach() (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:128)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (128)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 10:50:01 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:208)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (208)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 11:51:44 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:208)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (208)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 14:57:22 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:208)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (208)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 14:59:22 [error] [php] Undefined variable: msg (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:208)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (208)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 15:07:10 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '123@test.com' for key 'email_UNIQUE'. The SQL statement executed was: INSERT INTO `jgg_user` (`password`, `email`, `state`, `create_time`) VALUES (:yp0, :yp1, :yp2, NOW()).
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (195)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/11 15:07:10 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '123@test.com' for key 'email_UNIQUE'. The SQL statement executed was: INSERT INTO `jgg_user` (`password`, `email`, `state`, `create_time`) VALUES (:yp0, :yp1, :yp2, NOW())' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbCommand.php:354
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(1014): CDbCommand->execute()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(787): CActiveRecord->insert(NULL)
+#2 /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php(195): CActiveRecord->save()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): ApiController->actionCreate()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('create')
+#13 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/create')
+#14 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#15 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/jugaogao/index.php/api/users
+---
+2012/07/12 20:38:31 [error] [php] Undefined variable: fistHalf (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:189)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (189)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/12 21:06:44 [error] [php] Undefined variable: interString (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:193)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (193)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/12 21:08:16 [error] [php] Undefined variable: interString (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:193)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (193)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/12 21:11:06 [error] [php] Undefined variable: interString (/Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php:193)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): ApiController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CAccessControlFilter->filter()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): ApiController->filterAccessControl()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): ApiController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): ApiController->run()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/users
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/ApiController.php (193)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/27 14:38:13 [error] [php] include(Zend_Mail.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (/Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/YiiBase.php:418)
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/MailController.php(6): spl_autoload_call()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): MailController->actionIndex()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): MailController->runAction()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): MailController->runActionWithFilters()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): MailController->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#8 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/mail/index
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/MailController.php (6)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/27 14:43:36 [error] [php] include(Zend_Mail.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (/Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/YiiBase.php:418)
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/MailController.php(8): spl_autoload_call()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): MailController->actionIndex()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): MailController->runAction()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): MailController->runActionWithFilters()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): MailController->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#8 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/mail/index
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/MailController.php (8)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/27 16:44:45 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'jugaogao.jgg_event_validate' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `jgg_event_validate`.
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/27 17:18:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 17:18:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 17:18:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 18:57:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 18:57:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 18:57:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 19:01:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 19:01:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 19:01:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 19:42:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 19:42:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 19:42:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 19:44:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 19:44:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 19:44:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/resetpasswo...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/resetpassword
+---
+2012/07/27 19:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resetpassword".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('resetpassword')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('userrest/resetp...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/restpassword
+---
+2012/07/27 19:53:26 [error] [php] Use of undefined constant id - assumed 'id' (/Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php:29)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): UserrestController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): UserrestController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): UserrestController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/restpassword
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php (29)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/27 19:54:06 [error] [php] Use of undefined constant TIME_ZONE_UTC - assumed 'TIME_ZONE_UTC' (/Applications/MAMP/htdocs/jugaogao/protected/models/JggActiveRecord.php:17)
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(34): User->save()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): UserrestController->actionResetpassword()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): UserrestController->runAction()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): UserrestController->runActionWithFilters()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): UserrestController->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#8 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/restpassword
+in /Applications/MAMP/htdocs/jugaogao/protected/models/JggActiveRecord.php (17)
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php (34)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/27 19:56:10 [error] [php] Use of undefined constant TIME_ZONE_UTC - assumed 'TIME_ZONE_UTC' (/Applications/MAMP/htdocs/jugaogao/protected/models/JggActiveRecord.php:17)
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(34): User->save()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): UserrestController->actionResetpassword()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): UserrestController->runAction()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): UserrestController->runActionWithFilters()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): UserrestController->run()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#8 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/restpassword
+in /Applications/MAMP/htdocs/jugaogao/protected/models/JggActiveRecord.php (17)
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php (34)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/27 11:57:25 [error] [exception.CException] exception 'CException' with message 'Property "User.update_time" is not defined.' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CComponent.php:174
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(160): CComponent->__set('update_time', Object(CDbExpression))
+#1 /Applications/MAMP/htdocs/jugaogao/protected/models/JggActiveRecord.php(18): CActiveRecord->__set('update_time', Object(CDbExpression))
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModel.php(155): JggActiveRecord->beforeValidate()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(786): CModel->validate(NULL)
+#4 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(34): CActiveRecord->save()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): UserrestController->actionResetpassword()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('userrest/resetp...')
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/jugaogao/index.php/api/restpassword
+---
+2012/07/27 11:58:42 [error] [exception.CException] exception 'CException' with message 'Property "User.update_time" is not defined.' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CComponent.php:174
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(160): CComponent->__set('update_time', '2012-07-27 11:5...')
+#1 /Applications/MAMP/htdocs/jugaogao/protected/models/JggActiveRecord.php(18): CActiveRecord->__set('update_time', '2012-07-27 11:5...')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModel.php(155): JggActiveRecord->beforeValidate()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(786): CModel->validate(NULL)
+#4 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(34): CActiveRecord->save()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): UserrestController->actionResetpassword()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('userrest/resetp...')
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/jugaogao/index.php/api/restpassword
+---
+2012/07/27 12:08:39 [error] [exception.CException] exception 'CException' with message 'Property "User.update_time" is not defined.' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CComponent.php:174
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(160): CComponent->__set('update_time', '2012-07-27 12:0...')
+#1 /Applications/MAMP/htdocs/jugaogao/protected/models/JggActiveRecord.php(18): CActiveRecord->__set('update_time', '2012-07-27 12:0...')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModel.php(155): JggActiveRecord->beforeValidate()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(786): CModel->validate(NULL)
+#4 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(32): CActiveRecord->save()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): UserrestController->actionResetpassword()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('userrest/resetp...')
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/jugaogao/index.php/api/restpassword
+---
+2012/07/27 12:09:29 [error] [php] Use of undefined constant RESPONSE_STATUS_GOOD - assumed 'RESPONSE_STATUS_GOOD' (/Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php:34)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): UserrestController->runAction()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): UserrestController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): UserrestController->run()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/jugaogao/index.php(13): CWebApplication->run()
+REQUEST_URI=/jugaogao/index.php/api/restpassword
+in /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php (34)
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/07/27 12:25:25 [error] [exception.CException] exception 'CException' with message 'UserrestController and its behaviors do not have a method or closure named "_getStatusCodeMessage".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CComponent.php:266
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(54): CComponent->__call('_getStatusCodeM...', Array)
+#1 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(54): UserrestController->_getStatusCodeMessage(201)
+#2 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(39): UserrestController->_sendResponse(201, '{"status_code":...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): UserrestController->actionResetpassword()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('userrest/resetp...')
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/jugaogao/index.php/api/restpassword
+---
+2012/07/27 12:27:26 [error] [exception.CException] exception 'CException' with message 'UserrestController and its behaviors do not have a method or closure named "_getStatusCodeMessage".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CComponent.php:266
+Stack trace:
+#0 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(54): CComponent->__call('_getStatusCodeM...', Array)
+#1 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(54): UserrestController->_getStatusCodeMessage(201)
+#2 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(39): UserrestController->_sendResponse(201, '{"status_code":...')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): UserrestController->actionResetpassword()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('resetpassword')
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('userrest/resetp...')
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/jugaogao/index.php/api/restpassword
+---
+2012/07/31 18:48:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(309): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModule.php(388): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(431): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(615): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(2263): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Actionauth))
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(394): CActiveRecord::model('Actionauth')
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(78): CActiveRecord->getMetaData()
+#9 /Applications/MAMP/htdocs/jugaogao/protected/controllers/RestController.php(61): CActiveRecord->__construct()
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): RestController->actionAuthkey()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#14 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#15 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#16 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#17 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#18 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('authkey')
+#20 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('rest/authkey')
+#21 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#22 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/jugaogao/index.php/api/authkey/DEC9BAF3F3D24FAF8F5EC4D2D352AFD2
+---
+2012/07/31 19:25:29 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(309): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModule.php(388): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(431): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(615): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(2263): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Actionauth))
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(394): CActiveRecord::model('Actionauth')
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(78): CActiveRecord->getMetaData()
+#9 /Applications/MAMP/htdocs/jugaogao/protected/controllers/RestController.php(61): CActiveRecord->__construct()
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): RestController->actionAuthkey()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#14 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#15 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#16 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#17 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#18 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('authkey')
+#20 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('rest/authkey')
+#21 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#22 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/jugaogao/index.php/api/authkey/DEC9BAF3F3D24FAF8F5EC4D2D352AFD2
+---
+2012/07/31 19:25:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(309): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModule.php(388): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(431): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(615): CApplication->getDb()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(2263): CActiveRecord->getDbConnection()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Actionauth))
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(394): CActiveRecord::model('Actionauth')
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(78): CActiveRecord->getMetaData()
+#9 /Applications/MAMP/htdocs/jugaogao/protected/controllers/RestController.php(61): CActiveRecord->__construct()
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): RestController->actionAuthkey()
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#13 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#14 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#15 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#16 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#17 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(292): CFilterChain->run()
+#18 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('authkey')
+#20 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('rest/authkey')
+#21 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#22 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/jugaogao/index.php/api/authkey/DEC9BAF3F3D24FAF8F5EC4D2D352AFD2
+---
+2012/08/02 19:04:09 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "encrypt".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CComponent.php:266
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(226): CComponent->__call('encrypt', Array)
+#1 /Applications/MAMP/htdocs/jugaogao/protected/components/UserIdentity.php(22): CActiveRecord->__call('encrypt', Array)
+#2 /Applications/MAMP/htdocs/jugaogao/protected/components/UserIdentity.php(22): User->encrypt('123456')
+#3 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(61): UserIdentity->authenticate()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): UserrestController->actionSignin()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('signin')
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('userrest/signin')
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/jugaogao/index.php/api/signin
+---
+2012/08/02 19:07:07 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "encrypt".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CComponent.php:266
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(226): CComponent->__call('encrypt', Array)
+#1 /Applications/MAMP/htdocs/jugaogao/protected/components/UserIdentity.php(22): CActiveRecord->__call('encrypt', Array)
+#2 /Applications/MAMP/htdocs/jugaogao/protected/components/UserIdentity.php(22): User->encrypt('123456')
+#3 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(61): UserIdentity->authenticate()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): UserrestController->actionSignin()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('signin')
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('userrest/signin')
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/jugaogao/index.php/api/signin
+---
+2012/08/02 19:11:42 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "encrypt".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CComponent.php:266
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(226): CComponent->__call('encrypt', Array)
+#1 /Applications/MAMP/htdocs/jugaogao/protected/components/UserIdentity.php(22): CActiveRecord->__call('encrypt', Array)
+#2 /Applications/MAMP/htdocs/jugaogao/protected/components/UserIdentity.php(22): User->encrypt('123456')
+#3 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(61): UserIdentity->authenticate()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): UserrestController->actionSignin()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('signin')
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('userrest/signin')
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/jugaogao/index.php/api/signin
+---
+2012/08/02 19:25:22 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "encrypt".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CComponent.php:266
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(226): CComponent->__call('encrypt', Array)
+#1 /Applications/MAMP/htdocs/jugaogao/protected/components/UserIdentity.php(22): CActiveRecord->__call('encrypt', Array)
+#2 /Applications/MAMP/htdocs/jugaogao/protected/components/UserIdentity.php(22): User->encrypt('123456')
+#3 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(61): UserIdentity->authenticate()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): UserrestController->actionSignin()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('signin')
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('userrest/signin')
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/jugaogao/index.php/api/signin
+---
+2012/08/02 19:27:03 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "encrypt".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CComponent.php:266
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(226): CComponent->__call('encrypt', Array)
+#1 /Applications/MAMP/htdocs/jugaogao/protected/components/UserIdentity.php(22): CActiveRecord->__call('encrypt', Array)
+#2 /Applications/MAMP/htdocs/jugaogao/protected/components/UserIdentity.php(22): User->encrypt('123456')
+#3 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(61): UserIdentity->authenticate()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): UserrestController->actionSignin()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('signin')
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('userrest/signin')
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/jugaogao/index.php/api/signin
+---
+2012/08/02 19:28:46 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "encrypt".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CComponent.php:266
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(226): CComponent->__call('encrypt', Array)
+#1 /Applications/MAMP/htdocs/jugaogao/protected/components/UserIdentity.php(22): CActiveRecord->__call('encrypt', Array)
+#2 /Applications/MAMP/htdocs/jugaogao/protected/components/UserIdentity.php(22): User->encrypt('123456')
+#3 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(61): UserIdentity->authenticate()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): UserrestController->actionSignin()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('signin')
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('userrest/signin')
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/jugaogao/index.php/api/signin
+---
+2012/08/02 21:49:10 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "encrypt".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CComponent.php:266
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/ar/CActiveRecord.php(226): CComponent->__call('encrypt', Array)
+#1 /Applications/MAMP/htdocs/jugaogao/protected/components/UserIdentity.php(22): CActiveRecord->__call('encrypt', Array)
+#2 /Applications/MAMP/htdocs/jugaogao/protected/components/UserIdentity.php(22): User->encrypt('123456')
+#3 /Applications/MAMP/htdocs/jugaogao/protected/controllers/UserrestController.php(61): UserIdentity->authenticate()
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): UserrestController->actionSignin()
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('signin')
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('userrest/signin')
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/jugaogao/index.php/api/signin
+---
+2012/08/02 22:00:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "signin".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('signin')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('signin')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/signin')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/signin
+---
+2012/08/02 22:10:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "signin".' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php:484
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(271): CController->missingAction('signin')
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('signin')
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('api/signin')
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/jugaogao/index.php/api/signin
+---
+2012/08/30 13:23:44 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'vjugogo'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(309): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModule.php(388): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModule.php(104): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/generators/crud/CrudCode.php(44): CModule->__get('db')
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CFormModel.php(40): CrudCode->init()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/CCodeGenerator.php(152): CFormModel->__construct()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/CCodeGenerator.php(64): CCodeGenerator->prepare()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): CCodeGenerator->actionIndex()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('')
+#13 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('gii/crud')
+#14 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#15 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/jugaogao/index.php/gii/crud
+HTTP_REFERER=http://localhost/jugaogao/index.php/gii/form
+---
+2012/08/30 13:23:49 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'vjugogo'@'localhost' (using password: YES)' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(309): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModule.php(388): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModule.php(104): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/generators/crud/CrudCode.php(44): CModule->__get('db')
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CFormModel.php(40): CrudCode->init()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/CCodeGenerator.php(152): CFormModel->__construct()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/CCodeGenerator.php(64): CCodeGenerator->prepare()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): CCodeGenerator->actionIndex()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('')
+#13 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('gii/crud')
+#14 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#15 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/jugaogao/index.php/gii/crud
+HTTP_REFERER=http://localhost/jugaogao/index.php/gii/form
+---
+2012/08/30 13:26:17 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[42000] [1049] Unknown database 'vjugogo'' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(309): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModule.php(388): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModule.php(104): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/generators/crud/CrudCode.php(44): CModule->__get('db')
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CFormModel.php(40): CrudCode->init()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/CCodeGenerator.php(152): CFormModel->__construct()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/CCodeGenerator.php(64): CCodeGenerator->prepare()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): CCodeGenerator->actionIndex()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('')
+#13 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('gii/crud')
+#14 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#15 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/jugaogao/index.php/gii/crud
+HTTP_REFERER=http://localhost/jugaogao/index.php/gii/form
+---
+2012/08/30 13:26:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[42000] [1049] Unknown database 'vjugogo'' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(309): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModule.php(388): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModule.php(104): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/generators/crud/CrudCode.php(44): CModule->__get('db')
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CFormModel.php(40): CrudCode->init()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/CCodeGenerator.php(152): CFormModel->__construct()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/CCodeGenerator.php(64): CCodeGenerator->prepare()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): CCodeGenerator->actionIndex()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('')
+#13 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('gii/crud')
+#14 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#15 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/jugaogao/index.php/gii/crud
+HTTP_REFERER=http://localhost/jugaogao/index.php/gii/form
+---
+2012/09/13 11:50:31 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[42000] [1044] Access denied for user 'vjugogo'@'localhost' to database 'vjugogo'' in /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/db/CDbConnection.php(309): CDbConnection->setActive(true)
+#2 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModule.php(388): CDbConnection->init()
+#3 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CModule.php(104): CModule->getComponent('db')
+#4 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/generators/model/ModelCode.php(54): CModule->__get('db')
+#5 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CFormModel.php(40): ModelCode->init()
+#6 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/CCodeGenerator.php(152): CFormModel->__construct()
+#7 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/gii/CCodeGenerator.php(64): CCodeGenerator->prepare()
+#8 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/actions/CInlineAction.php(50): CCodeGenerator->actionIndex()
+#9 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#10 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#11 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(276): CController->run('')
+#13 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/web/CWebApplication.php(135): CWebApplication->runController('gii/model')
+#14 /Applications/MAMP/htdocs/yii-1.1.10.r3566/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#15 /Applications/MAMP/htdocs/jugaogao/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/jugaogao/index.php/gii/model
+HTTP_REFERER=http://localhost/jugaogao/index.php/gii/default/index
+---
+2012/09/13 21:15:27 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vjugogo.note' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `note`.
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
+2012/10/03 11:35:17 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vjugogo.avatar' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `avatar`.
+in /Applications/MAMP/htdocs/jugaogao/index.php (13)
