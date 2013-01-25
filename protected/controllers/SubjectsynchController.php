@@ -43,11 +43,8 @@ class SubjectsynchController extends Controller
 		}
 	}
 	
-	private function _createSubject()
+	public function actionCreate()
 	{
-		$log = new Logging();
-		$log->lfile(self::JGG_LOG_FILE_PATH);
-		
 		if(isset($_POST['Subject']))
 		{
 			$user_id = $_POST['Subject']['user_id'];
@@ -67,7 +64,7 @@ class SubjectsynchController extends Controller
 			$subject = Subject::fetchSubject($user_id, $subject_uuid);
 			if ($subject !== NULL) {
 				
-				$log->lwrite('subject found. uuid: ' . $subject->uuid . ' name: '. $subject->display_name .' subject: ' . $subject);
+				Accessory::writeLog('subject found. uuid: ' . $subject->uuid . ' name: '. $subject->display_name .' subject: ' . $subject);
 				
 				if (strtotime($subject->create_time) !== strtotime($_POST['Subject']['create_time'])) {
 					Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_DUPLICATED_SUBJECT, 
@@ -95,10 +92,12 @@ class SubjectsynchController extends Controller
 			
 			$user_role = 0;
 			foreach ($_POST['Subject'] as $key => $value) {
-				$log->lwrite($key . ' ' . $value);
+				Accessory::writeLog($key . ' ' . $value);
 				if ($subject->hasAttribute($key)) {
 					switch ($key) {
+						// 忽略以下参数
 						case 'last_update_time':
+						case 'usn':
 							break;
 						case 'uuid':
 							$subject->$key = pack('h*', $value);
@@ -115,10 +114,10 @@ class SubjectsynchController extends Controller
 						case 'user_id':
 							break;
 						default:
-							$log->lwrite($key . ' ' . $value);
+							Accessory::writeLog($key . ' ' . $value);
 							
 							Accessory::warningResponse(self::RESPONSE_STATUS_PARAM_INVALID,
-																		'Parameter is not allowed.');
+																		'Parameter '. $key .' is not allowed.');
 					}
 				}
 			}

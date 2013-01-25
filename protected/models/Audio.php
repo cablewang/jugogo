@@ -7,8 +7,11 @@
  * @property string $id
  * @property string $note_id
  * @property string $uuid
+ * @property string $dfs_group_name
  * @property string $original_file_name
+ * @property string $dfs_original_file_name
  * @property string $mp3_file_name
+ * @property string $dfs_mp3_file_name
  * @property double $duration
  * @property string $create_time
  * @property string $desc
@@ -48,11 +51,12 @@ class Audio extends CActiveRecord
 			array('duration', 'numerical'),
 			array('note_id', 'length', 'max'=>20),
 			array('uuid', 'length', 'max'=>16),
-			array('original_file_name, mp3_file_name', 'length', 'max'=>128),
+			array('dfs_group_name, dfs_mp3_file_name', 'length', 'max'=>45),
+			array('original_file_name, dfs_original_file_name, mp3_file_name', 'length', 'max'=>128),
 			array('desc', 'length', 'max'=>256),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, note_id, uuid, original_file_name, mp3_file_name, duration, create_time, desc', 'safe', 'on'=>'search'),
+			array('id, note_id, uuid, dfs_group_name, original_file_name, dfs_original_file_name, mp3_file_name, dfs_mp3_file_name, duration, create_time, desc', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,8 +81,11 @@ class Audio extends CActiveRecord
 			'id' => 'ID',
 			'note_id' => 'Note',
 			'uuid' => 'Uuid',
+			'dfs_group_name' => 'Dfs Group Name',
 			'original_file_name' => 'Original File Name',
+			'dfs_original_file_name' => 'Dfs Original File Name',
 			'mp3_file_name' => 'Mp3 File Name',
+			'dfs_mp3_file_name' => 'Dfs Mp3 File Name',
 			'duration' => 'Duration',
 			'create_time' => 'Create Time',
 			'desc' => 'Desc',
@@ -99,8 +106,11 @@ class Audio extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('note_id',$this->note_id,true);
 		$criteria->compare('uuid',$this->uuid,true);
+		$criteria->compare('dfs_group_name',$this->dfs_group_name,true);
 		$criteria->compare('original_file_name',$this->original_file_name,true);
+		$criteria->compare('dfs_original_file_name',$this->dfs_original_file_name,true);
 		$criteria->compare('mp3_file_name',$this->mp3_file_name,true);
+		$criteria->compare('dfs_mp3_file_name',$this->dfs_mp3_file_name,true);
 		$criteria->compare('duration',$this->duration);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('desc',$this->desc,true);
@@ -119,4 +129,5 @@ class Audio extends CActiveRecord
 		$audio = Audio::model()->findByAttributes(array('note_id'=>$note_id, 'uuid'=>$audio_uuid));
 		return ($audio != NULL) ? true : false;
 	}
+	
 }

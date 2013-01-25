@@ -121,4 +121,5 @@ class Weather extends CActiveRecord
 		$weather = Weather::model()->findByAttributes(array('note_id'=>$note_id, 'uuid'=>$weather_uuid));
 		return ($weather != NULL) ? true : false;
 	}
+	
 }

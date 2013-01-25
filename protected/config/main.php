@@ -49,6 +49,9 @@ return array(
 				// 申请临时授权令牌
 				array('rest/authkey', 'pattern'=>'api/<model:authkey>/<id:\w+>', 'verb'=>'GET'),
 				
+				// 更新同步状态
+				array('rest/syncstatus', 'pattern'=>'api/<model:syncstatus>/<id:\w+>', 'verb'=>'GET'),
+				
 				// 用户注册
 				array('userrest/signup', 'pattern'=>'api/<model:signup>', 'verb'=>'POST'),
 				
@@ -64,7 +67,7 @@ return array(
 				// 以下是各个实体的同步功能，同步功能包括上传创建，下载读取，上传修改，和客户端删除
 				
 				// subject实体的同步功能
-				array('subjectsynch/processsynch', 'pattern'=>'api/synch/<model:subject>', 'verb'=>'POST'),
+				array('subjectsynch/create', 'pattern'=>'api/subject/', 'verb'=>'POST'),
 				
 				// avatar实体的同步功能
 				array('avatarsynch/processsynch', 'pattern'=>'api/synch/<model:avatar>', 'verb'=>'POST'),
@@ -96,7 +99,7 @@ return array(
 		),
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=127.0.0.1;dbname=vjugogotest1',
+			'connectionString' => 'mysql:host=127.0.0.1;dbname=vjugogo',
 			'emulatePrepare' => true,
 			'username' => 'vjugogo',
 			'password' => 'vjgg!@#qwe',

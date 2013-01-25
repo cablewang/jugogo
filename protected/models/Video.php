@@ -7,12 +7,18 @@
  * @property string $id
  * @property string $note_id
  * @property string $uuid
+ * @property string $dfs_group_name
  * @property string $original_file_name
+ * @property string $dfs_original_file_name
  * @property string $phone_size_name
- * @property string $large_size_name
+ * @property string $dfs_phone_size_name
+ * @property string $pc_size_name
+ * @property string $dfs_pc_size_name
  * @property double $duration
  * @property string $ss_file_name
+ * @property string $dfs_ss_file_name
  * @property string $ss_thumb_name
+ * @property string $dfs_ss_thumb_name
  * @property string $create_time
  * @property string $desc
  *
@@ -51,11 +57,12 @@ class Video extends CActiveRecord
 			array('duration', 'numerical'),
 			array('note_id', 'length', 'max'=>20),
 			array('uuid', 'length', 'max'=>16),
-			array('original_file_name, phone_size_name, large_size_name, ss_file_name, ss_thumb_name', 'length', 'max'=>128),
+			array('dfs_group_name', 'length', 'max'=>45),
+			array('original_file_name, dfs_original_file_name, phone_size_name, dfs_phone_size_name, pc_size_name, dfs_pc_size_name, ss_file_name, dfs_ss_file_name, ss_thumb_name, dfs_ss_thumb_name', 'length', 'max'=>128),
 			array('desc', 'length', 'max'=>256),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, note_id, uuid, original_file_name, phone_size_name, large_size_name, duration, ss_file_name, ss_thumb_name, create_time, desc', 'safe', 'on'=>'search'),
+			array('id, note_id, uuid, dfs_group_name, original_file_name, dfs_original_file_name, phone_size_name, dfs_phone_size_name, pc_size_name, dfs_pc_size_name, duration, ss_file_name, dfs_ss_file_name, ss_thumb_name, dfs_ss_thumb_name, create_time, desc', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -80,12 +87,18 @@ class Video extends CActiveRecord
 			'id' => 'ID',
 			'note_id' => 'Note',
 			'uuid' => 'Uuid',
+			'dfs_group_name' => 'Dfs Group Name',
 			'original_file_name' => 'Original File Name',
+			'dfs_original_file_name' => 'Dfs Original File Name',
 			'phone_size_name' => 'Phone Size Name',
-			'large_size_name' => 'Large Size Name',
+			'dfs_phone_size_name' => 'Dfs Phone Size Name',
+			'pc_size_name' => 'Pc Size Name',
+			'dfs_pc_size_name' => 'Dfs Pc Size Name',
 			'duration' => 'Duration',
 			'ss_file_name' => 'Ss File Name',
+			'dfs_ss_file_name' => 'Dfs Ss File Name',
 			'ss_thumb_name' => 'Ss Thumb Name',
+			'dfs_ss_thumb_name' => 'Dfs Ss Thumb Name',
 			'create_time' => 'Create Time',
 			'desc' => 'Desc',
 		);
@@ -105,12 +118,18 @@ class Video extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('note_id',$this->note_id,true);
 		$criteria->compare('uuid',$this->uuid,true);
+		$criteria->compare('dfs_group_name',$this->dfs_group_name,true);
 		$criteria->compare('original_file_name',$this->original_file_name,true);
+		$criteria->compare('dfs_original_file_name',$this->dfs_original_file_name,true);
 		$criteria->compare('phone_size_name',$this->phone_size_name,true);
-		$criteria->compare('large_size_name',$this->large_size_name,true);
+		$criteria->compare('dfs_phone_size_name',$this->dfs_phone_size_name,true);
+		$criteria->compare('pc_size_name',$this->pc_size_name,true);
+		$criteria->compare('dfs_pc_size_name',$this->dfs_pc_size_name,true);
 		$criteria->compare('duration',$this->duration);
 		$criteria->compare('ss_file_name',$this->ss_file_name,true);
+		$criteria->compare('dfs_ss_file_name',$this->dfs_ss_file_name,true);
 		$criteria->compare('ss_thumb_name',$this->ss_thumb_name,true);
+		$criteria->compare('dfs_ss_thumb_name',$this->dfs_ss_thumb_name,true);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('desc',$this->desc,true);
 
@@ -118,7 +137,7 @@ class Video extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
+
 	/**
 	 * Try to retrieve video object from DB for a certain condition
 	 * @return boolean value for whether an video object is exist in the DB

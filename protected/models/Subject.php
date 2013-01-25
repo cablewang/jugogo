@@ -6,6 +6,8 @@
  * The followings are the available columns in table 'jgg_subject':
  * @property string $id
  * @property string $uuid
+ * @property integer $usn
+ * @property string $current_avatar_id
  * @property string $display_name
  * @property string $birthday
  * @property integer $gender
@@ -13,10 +15,13 @@
  * @property integer $type
  * @property string $create_time
  * @property string $last_update_time
+ * @property integer $public
+ * @property string $uurn
  *
  * The followings are the available model relations:
  * @property Avatar[] $avatars
  * @property Note[] $notes
+ * @property Avatar $currentAvatar
  * @property User[] $jggUsers
  */
 class Subject extends CActiveRecord
@@ -47,15 +52,17 @@ class Subject extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('uuid, type, create_time', 'required'),
-			array('gender, type', 'numerical', 'integerOnly'=>true),
+			array('uuid, usn, type, create_time', 'required'),
+			array('usn, gender, type, public', 'numerical', 'integerOnly'=>true),
 			array('uuid', 'length', 'max'=>16),
+			array('current_avatar_id', 'length', 'max'=>20),
 			array('display_name', 'length', 'max'=>32),
 			array('introduction', 'length', 'max'=>256),
+			array('uurn', 'length', 'max'=>64),
 			array('birthday, last_update_time', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, uuid, display_name, birthday, gender, introduction, type, create_time, last_update_time', 'safe', 'on'=>'search'),
+			array('id, uuid, usn, current_avatar_id, display_name, birthday, gender, introduction, type, create_time, last_update_time, public, uurn', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,6 +76,7 @@ class Subject extends CActiveRecord
 		return array(
 			'avatars' => array(self::HAS_MANY, 'Avatar', 'subject_id'),
 			'notes' => array(self::HAS_MANY, 'Note', 'subject_id'),
+			'currentAvatar' => array(self::BELONGS_TO, 'Avatar', 'current_avatar_id'),
 			'users' => array(self::MANY_MANY, 'User', 'jgg_user_subject(subject_id, user_id)'),
 		);
 	}
@@ -80,7 +88,9 @@ class Subject extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'uuid' => 'Uuid',
+			'uuid' => 'UUID',
+			'usn' => 'USN',
+			'current_avatar_id' => 'Current Avatar',
 			'display_name' => 'Display Name',
 			'birthday' => 'Birthday',
 			'gender' => 'Gender',
@@ -88,6 +98,8 @@ class Subject extends CActiveRecord
 			'type' => 'Type',
 			'create_time' => 'Create Time',
 			'last_update_time' => 'Last Update Time',
+			'public' => 'Public',
+			'uurn' => 'UURN',
 		);
 	}
 
@@ -104,6 +116,8 @@ class Subject extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('uuid',$this->uuid,true);
+		$criteria->compare('usn',$this->usn);
+		$criteria->compare('current_avatar_id',$this->current_avatar_id,true);
 		$criteria->compare('display_name',$this->display_name,true);
 		$criteria->compare('birthday',$this->birthday,true);
 		$criteria->compare('gender',$this->gender);
@@ -111,6 +125,8 @@ class Subject extends CActiveRecord
 		$criteria->compare('type',$this->type);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('last_update_time',$this->last_update_time,true);
+		$criteria->compare('public',$this->public);
+		$criteria->compare('uurn',$this->uurn,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -150,9 +166,9 @@ class Subject extends CActiveRecord
 	// return all subjects related to particular user
 	public static function fetchAllSubjects($user_id)
 	{
-		$sql = "SELECT us.subject_id id, role, uuid, display_name, 
-						birthday, gender, introduction, type, 
-						create_time, last_update_time 
+		$sql = "SELECT us.subject_id id, role, uuid, display_name,
+						birthday, gender, introduction, type,
+						create_time, last_update_time
 				FROM jgg_user_subject us, jgg_subject s
 				WHERE us.user_id =:userId AND us.subject_id = s.id";
 		$command = Yii::app()->db->createCommand($sql);
@@ -161,16 +177,16 @@ class Subject extends CActiveRecord
 	}
 	
 	/**
-	* associate specified user to current project
+	 * associate specified user to current project
 	 */
 	public function associateUserToSubject($user, $role)
 	{
 		$sql = "INSERT INTO jgg_user_subject (user_id, subject_id, role) VALUES (:userId, :subjectId, :role)";
-	   	$command = Yii::app()->db->createCommand($sql);
+		$command = Yii::app()->db->createCommand($sql);
 		$command->bindValue(":userId", $user->id, PDO::PARAM_INT);
 		$command->bindValue(":subjectId", $this->id, PDO::PARAM_INT);
 		$command->bindValue(":role", $role, PDO::PARAM_INT);
-	   	return $command->execute();
+		return $command->execute();
 	}
 	
 }

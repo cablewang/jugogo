@@ -7,13 +7,18 @@
  * @property string $id
  * @property string $note_id
  * @property string $uuid
+ * @property string $dfs_group_name
  * @property string $original_file_name
+ * @property string $dfs_original_file_name
  * @property string $display_file_name
+ * @property string $dfs_display_file_name
  * @property string $thumb_name
+ * @property string $dfs_thumb_name
  * @property string $create_time
  * @property string $desc
  * @property double $width
  * @property double $height
+ * @property integer $orietation
  *
  * The followings are the available model relations:
  * @property Note $note
@@ -47,14 +52,16 @@ class Photo extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('note_id, uuid, display_file_name, create_time', 'required'),
+			array('orietation', 'numerical', 'integerOnly'=>true),
 			array('width, height', 'numerical'),
 			array('note_id', 'length', 'max'=>20),
 			array('uuid', 'length', 'max'=>16),
-			array('original_file_name, display_file_name, thumb_name', 'length', 'max'=>128),
+			array('dfs_group_name', 'length', 'max'=>45),
+			array('original_file_name, dfs_original_file_name, display_file_name, dfs_display_file_name, thumb_name, dfs_thumb_name', 'length', 'max'=>128),
 			array('desc', 'length', 'max'=>256),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, note_id, uuid, original_file_name, display_file_name, thumb_name, create_time, desc, width, height', 'safe', 'on'=>'search'),
+			array('id, note_id, uuid, dfs_group_name, original_file_name, dfs_original_file_name, display_file_name, dfs_display_file_name, thumb_name, dfs_thumb_name, create_time, desc, width, height, orietation', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -79,13 +86,18 @@ class Photo extends CActiveRecord
 			'id' => 'ID',
 			'note_id' => 'Note',
 			'uuid' => 'Uuid',
+			'dfs_group_name' => 'Dfs Group Name',
 			'original_file_name' => 'Original File Name',
+			'dfs_original_file_name' => 'Dfs Original File Name',
 			'display_file_name' => 'Display File Name',
+			'dfs_display_file_name' => 'Dfs Display File Name',
 			'thumb_name' => 'Thumb Name',
+			'dfs_thumb_name' => 'Dfs Thumb Name',
 			'create_time' => 'Create Time',
 			'desc' => 'Desc',
 			'width' => 'Width',
 			'height' => 'Height',
+			'orietation' => 'Orietation',
 		);
 	}
 
@@ -103,19 +115,24 @@ class Photo extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('note_id',$this->note_id,true);
 		$criteria->compare('uuid',$this->uuid,true);
+		$criteria->compare('dfs_group_name',$this->dfs_group_name,true);
 		$criteria->compare('original_file_name',$this->original_file_name,true);
+		$criteria->compare('dfs_original_file_name',$this->dfs_original_file_name,true);
 		$criteria->compare('display_file_name',$this->display_file_name,true);
+		$criteria->compare('dfs_display_file_name',$this->dfs_display_file_name,true);
 		$criteria->compare('thumb_name',$this->thumb_name,true);
+		$criteria->compare('dfs_thumb_name',$this->dfs_thumb_name,true);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('desc',$this->desc,true);
 		$criteria->compare('width',$this->width);
 		$criteria->compare('height',$this->height);
+		$criteria->compare('orietation',$this->orietation);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-	
+
 	/**
 	 * Try to retrieve photo object from DB for a certain condition
 	 * @return boolean value for whether a photo object is exist in the DB

@@ -8,6 +8,7 @@
  * @property integer $user_id
  * @property string $subject_id
  * @property string $uuid
+ * @property integer $usn
  * @property string $content
  * @property string $save_time
  * @property integer $state
@@ -21,7 +22,8 @@
  * @property User[] $jggUsers
  * @property Location[] $locations
  * @property User $user
- * @property Mood[] $jggMoods
+ * @property Subject $subject
+ * @property Tag[] $jggTags
  * @property Photo[] $photos
  * @property Video[] $videos
  * @property Weather[] $weathers
@@ -54,14 +56,14 @@ class Note extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, subject_id, uuid, state', 'required'),
-			array('user_id, state', 'numerical', 'integerOnly'=>true),
+			array('user_id, subject_id, uuid, usn, state', 'required'),
+			array('user_id, usn, state', 'numerical', 'integerOnly'=>true),
 			array('subject_id, weather_id, location_id', 'length', 'max'=>20),
 			array('uuid', 'length', 'max'=>16),
 			array('content, save_time, last_update_time', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, user_id, subject_id, uuid, content, save_time, state, last_update_time, weather_id, location_id', 'safe', 'on'=>'search'),
+			array('id, user_id, subject_id, uuid, usn, content, save_time, state, last_update_time, weather_id, location_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -73,15 +75,16 @@ class Note extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'audios' => array(self::HAS_MANY, 'Audio', 'note_id'),
-			'comments' => array(self::HAS_MANY, 'Comment', 'note_id'),
-			'jggUsers' => array(self::MANY_MANY, 'User', 'jgg_favorite(note_id, user_id)'),
-			'location' => array(self::HAS_ONE, 'Location', 'note_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'jggMoods' => array(self::MANY_MANY, 'Mood', 'jgg_note_mood(note_id, mood_id)'),
+			'subject' => array(self::BELONGS_TO, 'Subject', 'subject_id'),
 			'photos' => array(self::HAS_MANY, 'Photo', 'note_id'),
 			'videos' => array(self::HAS_MANY, 'Video', 'note_id'),
-			'weather' => array(self::HAS_ONE, 'Weather', 'note_id'),
+			'audios' => array(self::HAS_MANY, 'Audio', 'note_id'),
+			'tags' => array(self::MANY_MANY, 'Tag', 'jgg_note_tag(note_id, tag_id)'),
+			'locations' => array(self::HAS_MANY, 'Location', 'note_id'),
+			'weathers' => array(self::HAS_MANY, 'Weather', 'note_id'),
+			'comments' => array(self::HAS_MANY, 'Comment', 'note_id'),
+			'claques' => array(self::MANY_MANY, 'User', 'jgg_favorite(note_id, user_id)'),
 		);
 	}
 
@@ -94,7 +97,8 @@ class Note extends CActiveRecord
 			'id' => 'ID',
 			'user_id' => 'User',
 			'subject_id' => 'Subject',
-			'uuid' => 'Uuid',
+			'uuid' => 'UUID',
+			'usn' => 'USN',
 			'content' => 'Content',
 			'save_time' => 'Save Time',
 			'state' => 'State',
@@ -119,6 +123,7 @@ class Note extends CActiveRecord
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('subject_id',$this->subject_id,true);
 		$criteria->compare('uuid',$this->uuid,true);
+		$criteria->compare('usn',$this->usn);
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('save_time',$this->save_time,true);
 		$criteria->compare('state',$this->state);
@@ -130,7 +135,7 @@ class Note extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
+
 	/**
 	 * 	Retrieves Note id by its user_id and uuid
 	 * 	@return note id

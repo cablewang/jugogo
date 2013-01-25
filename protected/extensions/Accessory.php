@@ -4,8 +4,18 @@
 // 功能方法：UUID生成，压缩UUID，解压UUID，发送email，发送错误报告给管理员，包装和发送REST数据包，解析HTTP状态代码
 //			
 
+
+
 class Accessory
 {
+	Const JGG_LOG_FILE_PATH = 'myphplog.txt';
+	
+	public static function writeLog($message) 
+	{
+		$log = new Logging();
+		$log->lfile(self::JGG_LOG_FILE_PATH);
+		$log->lwrite($message);
+	}
 	
 	public static function gen_uuid() {
 		// with '-' '%04x%04x-%04x-%04x-%04x-%04x%04x%04x'
@@ -54,6 +64,12 @@ class Accessory
 			$uuid = implode('', unpack('H*', $dbValue));
 			return $uuid;
 		}
+	}
+	
+	// return a md5 string for the input string
+	public static function md5Encrypt($value)
+	{
+		return md5($value);
 	}
 	
 	/**

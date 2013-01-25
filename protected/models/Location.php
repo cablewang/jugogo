@@ -105,7 +105,7 @@ class Location extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
+
 	/**
 	 * Try to retrieve location object from DB for a certain condition
 	 * @return boolean value for whether a location object is exist in the DB
@@ -115,4 +115,5 @@ class Location extends CActiveRecord
 		$location = Location::model()->findByAttributes(array('note_id'=>$note_id, 'uuid'=>$location_uuid));
 		return ($location != NULL) ? true : false;
 	}
+	
 }

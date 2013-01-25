@@ -7,13 +7,17 @@
  * @property string $id
  * @property string $subject_id
  * @property string $uuid
+ * @property integer $usn
+ * @property string $dfs_group_name
  * @property string $avatar_name
+ * @property string $dfs_avatar_name
  * @property string $avatar_thumb_name
+ * @property string $dfs_avatar_thumb_name
  * @property string $create_time
- * @property string $last_update_time
  *
  * The followings are the available model relations:
  * @property Subject $subject
+ * @property Subject[] $subjects
  */
 class Avatar extends CActiveRecord
 {
@@ -43,14 +47,15 @@ class Avatar extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('subject_id, uuid, avatar_name, create_time', 'required'),
+			array('subject_id, uuid, usn, avatar_name, create_time', 'required'),
+			array('usn', 'numerical', 'integerOnly'=>true),
 			array('subject_id', 'length', 'max'=>20),
 			array('uuid', 'length', 'max'=>16),
-			array('avatar_name, avatar_thumb_name', 'length', 'max'=>128),
-			array('last_update_time', 'safe'),
+			array('dfs_group_name', 'length', 'max'=>45),
+			array('avatar_name, dfs_avatar_name, avatar_thumb_name, dfs_avatar_thumb_name', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, subject_id, uuid, avatar_name, avatar_thumb_name, create_time, last_update_time', 'safe', 'on'=>'search'),
+			array('id, subject_id, uuid, usn, dfs_group_name, avatar_name, dfs_avatar_name, avatar_thumb_name, dfs_avatar_thumb_name, create_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,6 +68,7 @@ class Avatar extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'subject' => array(self::BELONGS_TO, 'Subject', 'subject_id'),
+			'notInUse' => array(self::HAS_MANY, 'Subject', 'current_avatar_id'),
 		);
 	}
 
@@ -74,11 +80,14 @@ class Avatar extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'subject_id' => 'Subject',
-			'uuid' => 'Uuid',
+			'uuid' => 'UUID',
+			'usn' => 'USN',
+			'dfs_group_name' => 'DFS Group Name',
 			'avatar_name' => 'Avatar Name',
+			'dfs_avatar_name' => 'DFS Avatar Name',
 			'avatar_thumb_name' => 'Avatar Thumb Name',
+			'dfs_avatar_thumb_name' => 'DFS Avatar Thumb Name',
 			'create_time' => 'Create Time',
-			'last_update_time' => 'Last Update Time',
 		);
 	}
 
@@ -96,10 +105,13 @@ class Avatar extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('subject_id',$this->subject_id,true);
 		$criteria->compare('uuid',$this->uuid,true);
+		$criteria->compare('usn',$this->usn);
+		$criteria->compare('dfs_group_name',$this->dfs_group_name,true);
 		$criteria->compare('avatar_name',$this->avatar_name,true);
+		$criteria->compare('dfs_avatar_name',$this->dfs_avatar_name,true);
 		$criteria->compare('avatar_thumb_name',$this->avatar_thumb_name,true);
+		$criteria->compare('dfs_avatar_thumb_name',$this->dfs_avatar_thumb_name,true);
 		$criteria->compare('create_time',$this->create_time,true);
-		$criteria->compare('last_update_time',$this->last_update_time,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -220,17 +220,5 @@ class UserrestController extends Controller
 			//return;
 		}
 	}
-	/*
-	private function _sendResponse ($status = 200, $body = '', $content_type = 'text/html')
-	{
-		// set the status
-		$status_header = 'HTTP/1.1' . $status . ' ' . Accessory::getStatusCodeMessage($status);
-		header($status_header);
-		// and the content type
-		header('Content-type: ' . $content_type);
 	
-		echo $body;
-		Yii::app()->end();
-	}
-	*/
 }
