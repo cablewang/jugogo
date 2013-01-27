@@ -44,20 +44,17 @@ class AvatarsynchController extends Controller
 		}
 	}
 	
-	private function _createAvatar()
+	public function actionCreate()
 	{
-		$log = new Logging();
-		$log->lfile(self::JGG_LOG_FILE_PATH);
-		$log->lwrite('create avatar ' . $_POST['Avatar']['user_id']);
 		
 		if(isset($_POST['Avatar']))
 		{
 			$user_id = $_POST['Avatar']['user_id'];
-			$subject_uuid = pack('h*', $_POST['Avatar']['owner_uuid']);
+			$subject_uuid = Accessory::packUUID($_POST['Avatar']['owner_uuid']);
 			
-			$log->lwrite('subject uuid: ' . $subject_uuid);
+			Accessory::writeLog('subject uuid: ' . $subject_uuid);
 			
-			$avatar_uuid = pack('h*', $_POST['Avatar']['uuid']);
+			$avatar_uuid = Accessory::packUUID($_POST['Avatar']['uuid']);
 			$subject_id = Subject::fetchSubjectId($user_id, $subject_uuid);
 			if ($subject_id == NULL) {
 		
@@ -68,7 +65,7 @@ class AvatarsynchController extends Controller
 		
 				Accessory::warningResponse(self::RESPONSE_STATUS_SUBJECT_NOT_EXIST, 
 										'System error, please contact Jugaogao customer service.');
-				return;
+				
 			}
 
 			$avatar = Avatar::model()->findByAttributes(array('subject_id'=>$subject_id, 'uuid'=>$avatar_uuid));
@@ -81,7 +78,7 @@ class AvatarsynchController extends Controller
 			
 					Accessory::warningResponse(self::RESPONSE_STATUS_DUPLICATED_AVATAR,
 												'System error, please contact Jugaogao customer service.');
-				return;
+				
 				} else {
 					// sync task has been processed successfully before
 					// send a good response to the App so that it knows to remove the task
@@ -92,7 +89,7 @@ class AvatarsynchController extends Controller
 							'error_message' => '',
 					);
 					Accessory::sendRESTResponse(201, CJSON::encode($response));
-					return;
+					
 				}
 			} else {
 				$avatar = new Avatar;
@@ -113,14 +110,14 @@ class AvatarsynchController extends Controller
 									);
 						Accessory::warningResponse(self::RESPONSE_STATUS_FILE_UPLOAD_FAILED, 
 													'File upload failure');
-						return;
+						
 					}
 				}
 			}
 				
 			//$model->attributes=$_POST['Subject'];
 			foreach ($_POST['Avatar'] as $key => $value) {
-				$log->lwrite($key . ' ' . $value);
+				Accessory::writeLog($key . ' ' . $value);
 				if ($key === 'user_id' || $key === 'server_id') {
 					continue;
 				}
@@ -133,7 +130,7 @@ class AvatarsynchController extends Controller
 						case 'last_update_time':
 							break;
 						case 'uuid':
-							$avatar->$key = pack('h*', $value);
+							$avatar->$key = Accessory::packUUID($value);
 							break;
 						default:
 							$avatar->$key = $value;
@@ -144,7 +141,7 @@ class AvatarsynchController extends Controller
 												'Parameter is not allowed.');
 				}
 			}
-			$log->lwrite('uuid: ' . $avatar->uuid . 
+			Accessory::writeLog('uuid: ' . $avatar->uuid . 
 							' subject id: ' . $avatar->subject_id .
 							' name: '. $avatar->avatar_name . 
 							' thumb name: ' . $avatar->avatar_thumb_name .
@@ -157,12 +154,12 @@ class AvatarsynchController extends Controller
 						'error_message' => '',
 				);
 				Accessory::sendRESTResponse(201, CJSON::encode($response));
-				return;
+				
 			} else {
 				// Errors occurred
 				Accessory::warningResponse(self::RESPONSE_STATUS_BAD, 
 											'Avatar synch failed');
-				return;
+				
 			}
 		}
 	}

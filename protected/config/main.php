@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'Jugaogao',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -70,7 +70,7 @@ return array(
 				array('subjectsynch/create', 'pattern'=>'api/subject/', 'verb'=>'POST'),
 				
 				// avatar实体的同步功能
-				array('avatarsynch/processsynch', 'pattern'=>'api/synch/<model:avatar>', 'verb'=>'POST'),
+				array('avatarsynch/create', 'pattern'=>'api/avatar/', 'verb'=>'POST'),
 				
 				// note实体的同步功能
 				array('notesynch/processsynch', 'pattern'=>'api/synch/<model:note>', 'verb'=>'POST'),
