@@ -1,7 +1,4 @@
 <?php 
-require_once('Logging.php');
-require_once('Accessory.php');
-
 class WeathersynchController extends Controller
 {
 	
@@ -22,7 +19,6 @@ class WeathersynchController extends Controller
 	Const RESPONSE_STATUS_WEATHER_NOT_EXIST = '813';
 	Const RESPONSE_STATUS_PARAM_INVALID = '101';
 	Const RESPONSE_STATUS_FILE_UPLOAD_FAILED = '102';
-	Const JGG_LOG_FILE_PATH = 'myphplog.txt'; 
 	
 	/**
 	 * process weather synch task sent from the App
@@ -47,9 +43,6 @@ class WeathersynchController extends Controller
 	
 	private function _createWeather()
 	{
-		$log = new Logging();
-		$log->lfile(self::JGG_LOG_FILE_PATH);
-		
 		if(isset($_POST['Weather']))
 		{
 			$user_id = $_POST['Weather']['user_id'];
@@ -97,7 +90,7 @@ class WeathersynchController extends Controller
 		
 			//$model->attributes=$_POST['Subject'];
 			foreach ($_POST['Weather'] as $key => $value) {
-				$log->lwrite($key . ' ' . $value);
+				Accessory::writeLog($key . ' ' . $value);
 				if ($key === 'user_id' || $key === 'server_id') {
 					continue;
 				}

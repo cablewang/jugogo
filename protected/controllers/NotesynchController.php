@@ -1,7 +1,4 @@
 <?php 
-require_once('Logging.php');
-require_once('Accessory.php');
-
 class NotesynchController extends Controller
 {
 	
@@ -20,7 +17,6 @@ class NotesynchController extends Controller
 	Const RESPONSE_STATUS_NOTE_NOT_EXIST = '805';
 	Const RESPONSE_STATUS_PARAM_INVALID = '101';
 	Const RESPONSE_STATUS_FILE_UPLOAD_FAILED = '102';
-	Const JGG_LOG_FILE_PATH = 'myphplog.txt'; 
 	Const JGG_IMAGE_PATH_PREFIX = 'images/';
 	
 	/**
@@ -46,9 +42,6 @@ class NotesynchController extends Controller
 	
 	private function _createNote()
 	{
-		$log = new Logging();
-		$log->lfile(self::JGG_LOG_FILE_PATH);
-	
 		if(isset($_POST['Note']))
 		{
 			$user_id = $_POST['Note']['user_id'];
@@ -93,7 +86,7 @@ class NotesynchController extends Controller
 			}
 				
 			foreach ($_POST['Note'] as $key => $value) {
-				$log->lwrite($key . ' ' . $value);
+				Accessory::writeLog($key . ' ' . $value);
 				if ($key === 'subject_uuid') {
 					$note->subject_id = Subject::fetchSubjectId($user_id, $subject_uuid);
 					continue;
@@ -119,7 +112,7 @@ class NotesynchController extends Controller
 			}
 			
 			foreach ($note->getAttributes() as $key => $value) {
-				$log->lwrite('note attribute: ' . $key . ' ' . $value);
+				Accessory::writeLog('note attribute: ' . $key . ' ' . $value);
 			}
 			
 			if($note->save()) {

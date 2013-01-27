@@ -2,10 +2,6 @@
 
 // 用户账户相关功能REST API
 // 包含：用户注册，用户登录
-
-require_once('Logging.php');
-require_once('Accessory.php');
-
 class UserrestController extends Controller
 {
 	
@@ -21,7 +17,6 @@ class UserrestController extends Controller
 	Const RESPONSE_STATUS_BAD_SIGNIN = '903';
 	Const RESPONSE_STATUS_INSUFFICIENT_PARAM = '103';
 	Const RESPONSE_STATUS_NO_ACCESS_RIGHT = '401';
-	Const JGG_LOG_FILE_PATH = 'myphplog.txt'; 
 
 	// 用户注册
 	public function actionSignup()
