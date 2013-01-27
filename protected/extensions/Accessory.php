@@ -101,7 +101,7 @@ class Accessory
 	
 	/**
 	 * 向客户端返回错误响应
-	 * @param string $statusCode 错误代码，$message 错误信息.
+	 * @param string $statusCode 状态代码，$message 错误信息.
 	 */ 
 	public static function warningResponse($statusCode, $message)
 	{
@@ -110,6 +110,15 @@ class Accessory
 				'error_message' => $message,
 		);
 		Accessory::sendRESTResponse(500, CJSON::encode($response));
+	}
+	
+	/**
+	 * 根据错误代码返回对应的错误信息
+	 * @param string $errorCode 错误代码
+	 */
+	public static function errorMessageForErrorCode($errorCode)
+	{
+		
 	}
 	
 	/**

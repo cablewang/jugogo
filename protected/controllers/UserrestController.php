@@ -26,8 +26,6 @@ class UserrestController extends Controller
 	// 用户注册
 	public function actionSignup()
 	{
-		$log = new Logging();
-		$log->lfile(self::JGG_LOG_FILE_PATH);
 	
 		// 如果post中没有参数，发送响应“缺少参数”错误信息后终结当前脚本
 		if (empty($_POST['User'])) {
@@ -38,20 +36,19 @@ class UserrestController extends Controller
 		$user = new User;
 		
 		// 创建用户实体
-		foreach ($_POST['User'] as $index=>$value) {
+		foreach ($_POST['User'] as $key=>$value) {
 			
 			// debug
-			$log->lwrite($index . ' ' . $value);
+			Accessory::writeLog($key . ' ' . $value);
 			
-			if ($user->hasAttribute($index)) {
-				switch ($index) {
-				
+			if ($user->hasAttribute($key)) {
+				switch ($key) {
 					case 'email':
 						// 校验email或手机号码是否已经被占用
 						if (User::model()->findByAttributes(array('email'=>$value))) {
 							Accessory::warningResponse(self::RESPONSE_STATUS_EMAIL_IS_TAKEN, 'The Email address has already been taken. Forgot password?');
 						}
-						$user->$index = $value;
+						$user->$key = $value;
 						break;
 						
 					case 'password': 
@@ -59,32 +56,32 @@ class UserrestController extends Controller
 						if (strlen($value) < 6 || strlen($value) > 12) {
 							Accessory::warningResponse(self::RESPONSE_STATUS_BAD_SIGNUP, 'Password invalide');
 						}
-						$user->$index = md5($value);
+						$user->$key = md5($value);
 						break;
 						
 					default:
-						$user->$index = $value;
+						$user->$key = $value;
 							
 				} 
 			} else {
-				if ($index == 'uuid') {
+				if ($key = 'uuid') {
 					$firstHalf = substr($value, 0, 16);
 					$baseUUID = Accessory::packUUID($value);
 				} else {
 					// 如果发现不可识别的参数，报错
-					Accessory::warningResponse(self::RESPONSE_STATUS_BAD_SIGNUP, 'Parameter is not allowed');
+					Accessory::warningResponse(self::RESPONSE_STATUS_BAD_SIGNUP, 'Parameter ' . $key . ' is not allowed');
 				}
 			}
 		}
-					
+
 		$testKey = $_POST['addition_info'];
 		//debug
-		$log->lwrite('addition_info   ' . $testKey);
+		Accessory::writeLog('addition_info   ' . $testKey);
 	
 		// 校验临时信任状
 		if ($testKey == '') {
 			Accessory::warningResponse(self::RESPONSE_STATUS_NO_ACCESS_RIGHT,
-					'You have not authorized to perform this action');
+					'You are not authorized to perform this action');
 		} else {
 			$actionAuth = Actionauth::model()->findByAttributes(array('client_sub_id'=>$baseUUID));
 			
@@ -92,19 +89,25 @@ class UserrestController extends Controller
 				$authKey = '';
 				$key = Accessory::unpackUUID($actionAuth->key);
 				$interString = substr_replace($key, $firstHalf, 0, 16);
-				$log->lwrite($interString);
+				Accessory::writeLog($interString);
 				$authKey = md5($interString);
-				$log->lwrite($authKey . ' ' . $testKey . ' ' . $interString . ' ' . $firstHalf);
+				Accessory::writeLog($authKey . ' ' . $testKey . ' ' . $interString . ' ' . $firstHalf);
 				if ($testKey != $authKey) {
-					Accessory::warningResponse(self::RESPONSE_STATUS_NO_ACCESS_RIGHT, 'You have not right to perform this action');
+					Accessory::warningResponse(self::RESPONSE_STATUS_NO_ACCESS_RIGHT, 'You are not authorized to perform this action');
 				}
 			} else {
-				Accessory::warningResponse(self::RESPONSE_STATUS_NO_ACCESS_RIGHT, 'You have not right to perform this action');
+				Accessory::warningResponse(self::RESPONSE_STATUS_NO_ACCESS_RIGHT, 'You are not authorized to perform this action');
 			}
 		}
 	
-		$user->state = 1;
+		// 初始化用户账户
+		$user->state = 1;	// 账户状态正常
 		date_default_timezone_set("UTC");
+		$user->reg_time = date('Y-m-d H:i:s');	// 注册时间（有可能与创建时间不同）
+		$user->last_login_time = $user->reg_time;
+		$user->score = 0;
+		$user->update_count = 0;
+		$user->full_sync_before = $user->reg_time;
 		
 		// 持久化user实体
 		if ($user->save()) {
@@ -113,7 +116,7 @@ class UserrestController extends Controller
 			$actionAuth->delete();
 			
 			// debug
-			$log->lwrite('new user created');
+			Accessory::writeLog('new user created');
 				
 			// 发送注册成功响应信息
 			$response = array(

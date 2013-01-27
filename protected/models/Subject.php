@@ -15,7 +15,7 @@
  * @property integer $type
  * @property string $create_time
  * @property string $last_update_time
- * @property integer $public
+ * @property integer $privacy
  * @property string $uurn
  *
  * The followings are the available model relations:
@@ -52,8 +52,8 @@ class Subject extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('uuid, usn, type, create_time', 'required'),
-			array('usn, gender, type, public', 'numerical', 'integerOnly'=>true),
+			array('uuid, usn, type, create_time, uurn', 'required'),
+			array('usn, gender, type, privacy', 'numerical', 'integerOnly'=>true),
 			array('uuid', 'length', 'max'=>16),
 			array('current_avatar_id', 'length', 'max'=>20),
 			array('display_name', 'length', 'max'=>32),
@@ -62,7 +62,7 @@ class Subject extends CActiveRecord
 			array('birthday, last_update_time', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, uuid, usn, current_avatar_id, display_name, birthday, gender, introduction, type, create_time, last_update_time, public, uurn', 'safe', 'on'=>'search'),
+			array('id, uuid, usn, current_avatar_id, display_name, birthday, gender, introduction, type, create_time, last_update_time, privacy, uurn', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -98,7 +98,7 @@ class Subject extends CActiveRecord
 			'type' => 'Type',
 			'create_time' => 'Create Time',
 			'last_update_time' => 'Last Update Time',
-			'public' => 'Public',
+			'privacy' => 'Privacy',
 			'uurn' => 'UURN',
 		);
 	}
@@ -125,14 +125,14 @@ class Subject extends CActiveRecord
 		$criteria->compare('type',$this->type);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('last_update_time',$this->last_update_time,true);
-		$criteria->compare('public',$this->public);
+		$criteria->compare('privacy',$this->privacy);
 		$criteria->compare('uurn',$this->uurn,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-	
+
 	// return bool value for whether any subject exist with specific user Id and UUID
 	public static function isSubjectExist($user_id, $uuid)
 	{
@@ -168,7 +168,7 @@ class Subject extends CActiveRecord
 	{
 		$sql = "SELECT us.subject_id id, role, uuid, display_name,
 						birthday, gender, introduction, type,
-						create_time, last_update_time
+						create_time, last_update_time, privacy, uurn
 				FROM jgg_user_subject us, jgg_subject s
 				WHERE us.user_id =:userId AND us.subject_id = s.id";
 		$command = Yii::app()->db->createCommand($sql);

@@ -45,10 +45,11 @@ class SubjectsynchController extends Controller
 	
 	public function actionCreate()
 	{
+		
 		if(isset($_POST['Subject']))
 		{
 			$user_id = $_POST['Subject']['user_id'];
-			$subject_uuid = pack('h*', $_POST['Subject']['uuid']);
+			$subject_uuid = Accessory::packUUID($_POST['Subject']['uuid']);
 			if (!User::isUserExist($user_id)) {
 				
 				Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_USER_NOT_EXIST, 
@@ -97,11 +98,17 @@ class SubjectsynchController extends Controller
 					switch ($key) {
 						// 忽略以下参数
 						case 'last_update_time':
+							break;
+							
 						case 'usn':
+							// 以下操作前应该锁死当前账号的update_count字段
+							$subject->$key = $user->update_count + 1;
 							break;
+							
 						case 'uuid':
-							$subject->$key = pack('h*', $value);
+							$subject->$key = Accessory::packUUID($value);
 							break;
+							
 						default:
 							$subject->$key = $value;		
 					}
@@ -122,36 +129,43 @@ class SubjectsynchController extends Controller
 				}
 			}
 			
+			Accessory::writeLog('finished all attributes assignment');
+			
 			if($subject->save()) {
 				//$user = Yii::app()->user;
 				$user = User::model()->findByPk($user_id);
+				
+				// subject 实体被成功存储到数据库中
+				$user->update_count = $subject->usn;
+				$user->save();
+				// 应该在这里对当前账户的update_count字段解锁
+				
 				$subject->associateUserToSubject($user, $user_role);
 				
-				$response = array('id' => $subject->id, 
+				$response = array(
+						'id' => $subject->id, 
+						'usn' => $subject->usn,
 						'status_code' => self::RESPONSE_STATUS_GOOD, 
-						'error_message' => '');
+						'error_message' => '',
+						);
 				Accessory::sendRESTResponse(201, CJSON::encode($response));
-				return;
 			} else {
+				Accessory::writeLog('subject save failed');
 				// Errors occurred
 				Accessory::warningResponse(self::RESPONSE_STATUS_BAD, 
 											'Subject synch failed');
-				return;
 			}
 		}
 	}
 	
 	private function _updateSubject()
 	{
-		$log = new Logging();
-		$log->lfile(self::JGG_LOG_FILE_PATH);
-		
-		$log->lwrite('update subject');
+		Accessory::writeLog('update subject');
 		
 		if(isset($_POST['Subject']))
 		{
 			$user_id = $_POST['Subject']['user_id'];
-			$subject_uuid = pack('h*', $_POST['Subject']['uuid']);
+			$subject_uuid = Accessory::packUUID($_POST['Subject']['uuid']);
 			//$log->lwrite('user id: ' . $user_id . ', ' . 'uuid: ' . $subject_uuid);
 			if (!User::isUserExist($user_id)) {
 		
@@ -162,10 +176,10 @@ class SubjectsynchController extends Controller
 														__CLASS__ .' '. __FUNCTION__);
 		
 				Accessory::warningResponse(self::RESPONSE_STATUS_USER_NOT_EXIST, 
-										'System error, please contact Jugaogao customer service.');
-				return;
+										'User not exist, please contact Jugaogao customer service.');
 			}
-				
+			$user = User::model()->findByPk($user_id);	
+			
 			if (!(Subject::isSubjectExist($user_id, $subject_uuid))) {
 		
 				Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_SUBJECT_NOT_EXIST, 
@@ -175,19 +189,24 @@ class SubjectsynchController extends Controller
 		
 				Accessory::warningResponse(self::RESPONSE_STATUS_SUBJECT_NOT_EXIST, 
 										'System error, please contact Jugaogao customer service.');
-				return;
 			}
 			
 			$subject = Subject::fetchSubject($user_id, $subject_uuid);
 			
 			//$model->attributes=$_POST['Subject'];
 			foreach ($_POST['Subject'] as $key => $value) {
-				$log->lwrite($key . ' ' . $value);
+				Accessory::writeLog($key . ' ' . $value);
 				if ($subject->hasAttribute($key)) {
 					switch ($key) {
 						case 'uuid':
 						case 'create_time':
 							break;
+							
+						case 'usn':
+							// 以下操作前应该锁死当前账号的update_count字段
+							$subject->$key = $user->update_count + 1;
+							break;
+							
 						default:
 							$subject->$key = $value;
 					}
@@ -198,7 +217,7 @@ class SubjectsynchController extends Controller
 						case 'user_id':
 							break;
 						default:
-							$log->lwrite($key . ' ' . $value);
+							Accessory::writeLog($key . ' ' . $value);
 							Accessory::warningResponse(self::RESPONSE_STATUS_PARAM_INVALID,
 															'Parameter is not allowed.');
 					}
@@ -206,8 +225,14 @@ class SubjectsynchController extends Controller
 			}
 			
 			if($subject->save()) {
+				// subject 实体被成功存储到数据库中
+				$user->update_count = $subject->usn;
+				$user->save();
+				// 应该在这里对当前账户的update_count字段解锁
+				
 				$response = array(
-						"id" => $subject->id,
+						'id' => $subject->id,
+						'usn' => $subject->usn,
 						'status_code' => self::RESPONSE_STATUS_GOOD,
 						'error_message' => '',
 				);

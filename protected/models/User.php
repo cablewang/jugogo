@@ -37,7 +37,7 @@
  * @property Subject[] $jggSubjects
  * @property Tag[] $jggTags
  */
-class User extends CActiveRecord
+class User extends JggActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
