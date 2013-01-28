@@ -1,7 +1,4 @@
 <?php 
-require_once('Logging.php');
-require_once('Accessory.php');
-
 class PhotosynchController extends Controller
 {
 	
@@ -22,7 +19,6 @@ class PhotosynchController extends Controller
 	Const RESPONSE_STATUS_PHOTO_NOT_EXIST = '807';
 	Const RESPONSE_STATUS_PARAM_INVALID = '101';
 	Const RESPONSE_STATUS_FILE_UPLOAD_FAILED = '102';
-	Const JGG_LOG_FILE_PATH = 'myphplog.txt';
 	Const JGG_PHOTO_PATH_POSTFIX = 'photo';
 	Const JGG_USER_PATH_PREFIX = 'private';
 
@@ -49,9 +45,7 @@ class PhotosynchController extends Controller
 	
 	private function _createPhoto()
 	{
-		$log = new Logging();
-		$log->lfile(self::JGG_LOG_FILE_PATH);
-		$log->lwrite('create photo' . $_POST['Photo']['user_id']);
+		Accessory::writeLog('create photo' . $_POST['Photo']['user_id']);
 		
 		if(isset($_POST['Photo']))
 		{
@@ -123,7 +117,7 @@ class PhotosynchController extends Controller
 				
 			//$model->attributes=$_POST['Subject'];
 			foreach ($_POST['Photo'] as $key => $value) {
-				$log->lwrite($key . ' ' . $value);
+				Accessory::writeLog($key . ' ' . $value);
 				if ($key === 'user_id' || $key === 'server_id') {
 					continue;
 				}

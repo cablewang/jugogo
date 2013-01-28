@@ -1,7 +1,4 @@
 <?php 
-require_once('Logging.php');
-require_once('Accessory.php');
-
 class AvatarsynchController extends Controller
 {
 	
@@ -19,7 +16,6 @@ class AvatarsynchController extends Controller
 	Const RESPONSE_STATUS_AVATAR_NOT_EXIST = '817';
 	Const RESPONSE_STATUS_PARAM_INVALID = '101';
 	Const RESPONSE_STATUS_FILE_UPLOAD_FAILED = '102';
-	Const JGG_LOG_FILE_PATH = 'myphplog.txt';
 	Const JGG_PROFILE_PATH_POSTFIX = 'profile';
 	Const JGG_USER_PATH_PREFIX = 'private';
 

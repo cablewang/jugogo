@@ -1,7 +1,4 @@
 <?php 
-require_once('Logging.php');
-require_once('Accessory.php');
-
 class LocationsynchController extends Controller
 {
 	
@@ -21,7 +18,6 @@ class LocationsynchController extends Controller
 	Const RESPONSE_STATUS_LOCATION_NOT_EXIST = '815';
 	Const RESPONSE_STATUS_PARAM_INVALID = '101';
 	Const RESPONSE_STATUS_FILE_UPLOAD_FAILED = '102';
-	Const JGG_LOG_FILE_PATH = 'myphplog.txt'; 
 	Const JGG_IMAGE_PATH_PREFIX = 'images/';
 
 	/**
@@ -47,9 +43,6 @@ class LocationsynchController extends Controller
 	
 	private function _createLocation()
 	{
-		$log = new Logging();
-		$log->lfile(self::JGG_LOG_FILE_PATH);
-		
 		$weather=new Weather;
 		
 		if(isset($_POST['Location']))
@@ -84,7 +77,7 @@ class LocationsynchController extends Controller
 		
 			//$model->attributes=$_POST['Subject'];
 			foreach ($_POST['Location'] as $key => $value) {
-				$log->lwrite($key . ' ' . $value);
+				Accessory::writeLog($key . ' ' . $value);
 				if ($location->hasAttribute($key)) {
 					switch ($key) {
 						case 'last_update_time':

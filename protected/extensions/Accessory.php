@@ -1,20 +1,55 @@
 <?php
+/**
+ * 错误处理句柄方法
+ * @param int $errno 必需:错误报告级别,为用户定义的错误规定错误报告级别
+ * @param string $errstr 必需:为用户定义的错误规定错误消息
+ * @param string $errfile 可选：错误文件名
+ */
+function myErrorHandler($errno, $errstr, $errfile = '',$errorline='') {
+	$logfile =APP_ROOT . '/log/errors_' . date ( 'Y-m-d' ) . '.log';
+	if (! file_exists ( $logfile )) {
+		if (touch ( $logfile )) {
+			@chmod ( $logfile, 0777 );
+		}
+	}
+	//错误类型描述数组
+	$errortype = array (E_ERROR => "Error", E_WARNING => "Warning", E_PARSE => "Parsing Error", E_NOTICE => "Notice", E_CORE_ERROR => "Core Error", E_CORE_WARNING => "Core Warning", E_COMPILE_ERROR => "Compile Error", E_COMPILE_WARNING => "Compile Warning", E_USER_ERROR => "User Error", E_USER_WARNING => "User Warning", E_USER_NOTICE => "User Notice", E_STRICT => "Runtime Notice" );
+	//需要记录日志的错误类型，可根据需要减少
+	$save_errors = array (E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR );
+	//if (in_array ( $errno, $save_errors )) {
+	error_log ( date ( 'Y-m-d H:i:s' ) . "||$errortype[$errno]||file:$errfile,line:$errorline||$errstr||" . PHP_EOL, 3, $logfile );
+	//}
+}
 
+/**
+ * 异常处理句柄方法
+ * 如果系统有未捕获的异常时会执行myExceptionHandler方法
+ * @param Exception $errno 异常对象
+ */
+function myExceptionHandler($myexception) {
+	//记录错误日志
+	trigger_error ( 'EXCEPTION:' . $myexception->getMessage (), E_ERROR );
+	//显示失败页面，可以自定义错误页面
+	echo $myexception->getMessage ();exit;
+}
 // 帮助类，服务范围——全局
 // 功能方法：UUID生成，压缩UUID，解压UUID，发送email，发送错误报告给管理员，包装和发送REST数据包，解析HTTP状态代码
-//			
-
-
-
+//
 class Accessory
 {
-	Const JGG_LOG_FILE_PATH = 'myphplog.txt';
-	
-	public static function writeLog($message) 
-	{
-		$log = new Logging();
-		$log->lfile(self::JGG_LOG_FILE_PATH);
-		$log->lwrite($message);
+	/**
+	* 记录日志
+	* @param mix $errstr 数组或字符串
+	* @param unknown_type $pre　日子文件前缀，默认为log
+	*/
+	public static function writeLog($errstr,$pre='log') {
+		$logfile =APP_ROOT . '/log/'.$pre.'_' . date ( 'Y-m-d' ) . '.log';
+		if (! file_exists ( $logfile )) {
+			if(touch($logfile)){
+				@chmod ( $logfile, 0777 );
+			}
+		}
+		error_log ( date ( 'Y-m-d H:i:s' ) .':'.(is_array($errstr)?json_encode($errstr):$errstr) .PHP_EOL, 3, $logfile );
 	}
 	
 	public static function gen_uuid() {

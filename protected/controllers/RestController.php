@@ -1,8 +1,4 @@
 <?php
-
-require_once('Logging.php');
-require_once('Accessory.php');
-
 class RestController extends Controller
 {
 
@@ -12,7 +8,6 @@ class RestController extends Controller
 	Const JGG_CUSTOMER_SERVICE_EMAIL_ADDRESS = 'anna@jugaogao.com';
 	Const JGG_CUSTOMER_SERVICE_REPRESENTATIVE_NAME = 'Anna';
 	Const RESPONSE_STATUS_BAD = '2';
-	Const JGG_LOG_FILE_PATH = 'myphplog.txt'; 
 	Const RESPONSE_STATUS_INSUFFICIENT_PARAM = '103';
 	Const RESPONSE_STATUS_USER_NOT_EXIST = '801';
 	
@@ -55,9 +50,7 @@ class RestController extends Controller
 	 */
 	public function actionAuthkey()
 	{
-		$log = new Logging();
 		$client_id = Accessory::packUUID($_GET['id']);
-		$log->lfile(self::JGG_LOG_FILE_PATH);
 		
 		$actionAuth = new Actionauth;
 		$actionAuth->client_sub_id = $client_id;
@@ -70,7 +63,7 @@ class RestController extends Controller
 			$response = array(
 				'authkey' => $phpuuid,
 			);
-			$log->lwrite('auth key ' . ': ' . $response['authkey'] . ', ' . Accessory::unpackUUID($actionAuth->key));
+			Accessory::writeLog('auth key ' . ': ' . $response['authkey'] . ', ' . Accessory::unpackUUID($actionAuth->key));
 			Accessory::sendRESTResponse(201, CJSON::encode($response));
 		} else {
 			// Errors occurred
@@ -121,7 +114,7 @@ class RestController extends Controller
 		$put_vars = CJSON::decode($json, true);
 		$log->lfile(self::JGG_LOG_FILE_PATH);
 		
-		$log->lwrite($put_vars[id] . ' ' . $put_vars[password]);
+		Accessory::writeLog($put_vars[id] . ' ' . $put_vars[password]);
 	
 		$user_id = $put_vars["id"];
 		$validate = new Eventvalidate;

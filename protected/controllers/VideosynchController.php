@@ -1,7 +1,4 @@
 <?php 
-require_once('Logging.php');
-require_once('Accessory.php');
-
 class VieosynchController extends Controller
 {
 	
@@ -21,7 +18,6 @@ class VieosynchController extends Controller
 	Const RESPONSE_STATUS_VIDEO_NOT_EXIST = '811';
 	Const RESPONSE_STATUS_PARAM_INVALID = '101';
 	Const RESPONSE_STATUS_FILE_UPLOAD_FAILED = '102';
-	Const JGG_LOG_FILE_PATH = 'myphplog.txt'; 
 	Const JGG_VIDEO_PATH_POSTFIX = 'video';
 
 	/**
@@ -47,9 +43,6 @@ class VieosynchController extends Controller
 	
 	private function _createVideo()
 	{
-		$log = new Logging();
-		$log->lfile(self::JGG_LOG_FILE_PATH);
-		
 		$photo=new Photo;
 		
 		if(isset($_POST['Audio']))
@@ -104,7 +97,7 @@ class VieosynchController extends Controller
 		
 			//$model->attributes=$_POST['Subject'];
 			foreach ($_POST['Video'] as $key => $value) {
-				$log->lwrite($key . ' ' . $value);
+				Accessory::writeLog($key . ' ' . $value);
 				if ($video->hasAttribute($key)) {
 					switch ($key) {
 						case 'last_update_time':

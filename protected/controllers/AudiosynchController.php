@@ -1,7 +1,4 @@
 <?php 
-require_once('Logging.php');
-require_once('Accessory.php');
-
 class AudiosynchController extends Controller
 {
 	
@@ -22,7 +19,6 @@ class AudiosynchController extends Controller
 	Const RESPONSE_STATUS_AUDIO_NOT_EXIST = '809';
 	Const RESPONSE_STATUS_PARAM_INVALID = '101';
 	Const RESPONSE_STATUS_FILE_UPLOAD_FAILED = '102';
-	Const JGG_LOG_FILE_PATH = 'myphplog.txt'; 
 	Const JGG_AUDIO_PATH_POSTFIX = 'audio';
 	Const JGG_USER_PATH_PREFIX = 'private';
 	
@@ -50,9 +46,6 @@ class AudiosynchController extends Controller
 	
 	private function _createAudio()
 	{
-		$log = new Logging();
-		$log->lfile(self::JGG_LOG_FILE_PATH);
-		
 		if(isset($_POST['Audio']))
 		{
 			$user_id = $_POST['Audio']['user_id'];
@@ -103,7 +96,7 @@ class AudiosynchController extends Controller
 							Accessory::convertToPhpValue(Note::fetchSubjectUUID($note_id)) . '/' . 
 							self::JGG_AUDIO_PATH_POSTFIX;
 				
-				$log->lwrite('subject id: ' . Note::fetchSubjectId($note_id) . 'subject uuid: ' . Note::fetchSubjectUUID($note_id));
+				Accessory::writeLog('subject id: ' . Note::fetchSubjectId($note_id) . 'subject uuid: ' . Note::fetchSubjectUUID($note_id));
 				
 				if (!file_exists($filePath)) {
 					mkdir($filePath, 0755, true);
@@ -125,7 +118,7 @@ class AudiosynchController extends Controller
 		
 			//$model->attributes=$_POST['Subject'];
 			foreach ($_POST['Audio'] as $key => $value) {
-				$log->lwrite($key . ' ' . $value);
+				Accessory::writeLog($key . ' ' . $value);
 				if ($key === 'user_id' || $key === 'server_id') {
 					continue;
 				}

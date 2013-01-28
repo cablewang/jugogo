@@ -1,7 +1,4 @@
 <?php 
-require_once('Logging.php');
-require_once('Accessory.php');
-
 class SubjectsynchController extends Controller
 {
 	
@@ -20,7 +17,6 @@ class SubjectsynchController extends Controller
 	Const RESPONSE_STATUS_NOTE_NOT_EXIST = '805';
 	Const RESPONSE_STATUS_PARAM_INVALID = '101';
 	Const RESPONSE_STATUS_FILE_UPLOAD_FAILED = '102';
-	Const JGG_LOG_FILE_PATH = 'myphplog.txt'; 
 
 	/**
 	 * receives request from client and sends back an authentication key
