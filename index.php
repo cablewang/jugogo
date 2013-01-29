@@ -11,6 +11,8 @@ defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 
 require_once($yii);
 require_once(APP_ROOT.'/protected/extensions/Accessory.php');
+// 设置服务器默认时区为UTC
+date_default_timezone_set('UTC');
 //设定系统出错时招待的错误处理方法
 set_error_handler("myErrorHandler");
 //如果系统有未捕获的异常时会执行myExceptionHandler方法

@@ -18,7 +18,11 @@ class UserrestController extends Controller
 	Const RESPONSE_STATUS_INSUFFICIENT_PARAM = '103';
 	Const RESPONSE_STATUS_NO_ACCESS_RIGHT = '401';
 
-	// 用户注册
+	/**
+	 * 用户注册
+	 * 过程中将检测客户端发来的临时信任状
+	 * 
+	 */
 	public function actionSignup()
 	{
 	
@@ -128,6 +132,59 @@ class UserrestController extends Controller
 			Accessory::warningResponse(self::RESPONSE_STATUS_BAD_SIGNUP, 'Could not create new user');
 		}
 		$log->lclose();
+	}
+	
+	/**
+	 * testing for data locking
+	 */
+	public function actionOptimistLocking()
+	{
+		Accessory::writeLog($_GET['id']);
+		$user1 = User::model()->findByPk($_GET['id']);
+		$user2 = User::model()->findByPk($_GET['id']);
+		$user3 = User::model()->findByPk($_GET['id']);
+		$user4 = User::model()->findByPk($_GET['id']);
+		
+		$seconds = 1;
+		
+		$attributes = array(
+				'last_update_time' => date('Y-m-d H:i:s'),
+				);
+		try {
+			$user1->updateByPk($_GET['id'], $attributes);
+		} catch (StaleObjectError $e) {
+			Accessory::writeLog($e->getMessage());
+		}
+		
+		sleep($seconds);
+		$attributes = array(
+				'last_update_time' => date('Y-m-d H:i:s'),
+		);
+		try {
+			$user2->updateByPk($_GET['id'], $attributes);
+		} catch (StaleObjectError $e) {
+			Accessory::writeLog($e->getMessage());
+		}
+
+		sleep($seconds);
+		$attributes = array(
+				'last_update_time' => date('Y-m-d H:i:s'),
+		);
+		try {
+			$user3->updateByPk($_GET['id'], $attributes);
+		} catch (StaleObjectError $e) {
+			Accessory::writeLog($e->getMessage());
+		}
+
+		sleep($seconds);
+		$attributes = array(
+				'last_update_time' => date('Y-m-d H:i:s'),
+		);
+		try {
+			$user4->updateByPk($_GET['id'], $attributes);
+		} catch (StaleObjectError $e) {
+			Accessory::writeLog($e->getMessage());
+		}
 	}
 	
 	/**

@@ -20,26 +20,8 @@ class AvatarsynchController extends Controller
 	Const JGG_USER_PATH_PREFIX = 'private';
 
 	/**
-	 * process photo synch task sent from the App
+	 * 创建新头像实体
 	 */
-	public function actionProcesssynch()
-	{
-		switch ($_POST['change_type'])
-		{
-			case 'create':
-				$this->_createAvatar();
-				break;
-			case 'update':
-				$this->_updateAvatar();
-				break;
-			case 'delete':
-				$this->_deleteAvatar();
-				break;
-			default:
-				;
-		}
-	}
-	
 	public function actionCreate()
 	{
 		
@@ -64,6 +46,9 @@ class AvatarsynchController extends Controller
 				
 			}
 
+			// 加载User实体，稍后获取USN时使用
+			$user = User::model()->findByPk($user_id);
+			
 			$avatar = Avatar::model()->findByAttributes(array('subject_id'=>$subject_id, 'uuid'=>$avatar_uuid));
 			if ($avatar !== NULL) {
 				if (strtotime($avatar->create_time) !== strtotime($_POST['Avatar']['create_time'])) {
@@ -111,30 +96,41 @@ class AvatarsynchController extends Controller
 				}
 			}
 				
-			//$model->attributes=$_POST['Subject'];
 			foreach ($_POST['Avatar'] as $key => $value) {
 				Accessory::writeLog($key . ' ' . $value);
-				if ($key === 'user_id' || $key === 'server_id') {
-					continue;
-				}
-				if ($key === 'owner_uuid') {
-					$avatar->subject_id = $subject_id;
-					continue;
-				}
 				if ($avatar->hasAttribute($key)) {
 					switch ($key) {
+						
 						case 'last_update_time':
 							break;
+							
 						case 'uuid':
 							$avatar->$key = Accessory::packUUID($value);
 							break;
+
+						case 'usn':
+								// 以下操作前应该锁死当前账号的update_count字段
+								$avatar->$key = $user->update_count + 1;
+								break;
 						default:
 							$avatar->$key = $value;
 					}
 		
 				} else {
-					Accessory::warningResponse(self::RESPONSE_STATUS_PARAM_INVALID, 
-												'Parameter is not allowed.');
+					switch ($key) {
+						case 'user_id':
+						case 'server_id':
+							break;
+						
+						case 'owner_uuid':
+							$avatar->subject_id = $subject_id;
+							break;
+				
+						default:
+							Accessory::warningResponse(self::RESPONSE_STATUS_PARAM_INVALID,
+							'Parameter is not allowed.');
+					}
+					
 				}
 			}
 			Accessory::writeLog('uuid: ' . $avatar->uuid . 

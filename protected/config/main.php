@@ -90,6 +90,9 @@ return array(
 				// location实体的同步功能（因为地理信息功能仍有Buy并且功能不全，在第一版中被暂时停用）
 				array('locationsynch/processsynch', 'pattern'=>'api/synch/<model:location>', 'verb'=>'POST'),
 				
+				// testing rule
+				array('userrest/optimistLocking', 'pattern'=>'api/<model:optimistLocking>/<id:\w+>', 'verb'=>'GET'),
+				
 				// Yii的默认规则。
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',

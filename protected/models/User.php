@@ -37,7 +37,7 @@
  * @property Subject[] $jggSubjects
  * @property Tag[] $jggTags
  */
-class User extends JggActiveRecord
+class User extends OptimistLockingActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
@@ -168,4 +168,8 @@ class User extends JggActiveRecord
 			return false;
 	}
 	
+	public function getlockingAttribute()
+	{
+		return 'update_count';
+	}
 }

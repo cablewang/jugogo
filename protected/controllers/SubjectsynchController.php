@@ -19,26 +19,8 @@ class SubjectsynchController extends Controller
 	Const RESPONSE_STATUS_FILE_UPLOAD_FAILED = '102';
 
 	/**
-	 * receives request from client and sends back an authentication key
+	 * 创建新记录对象或用户信息实体
 	 */
-	public function actionProcesssynch()
-	{
-		switch ($_POST['change_type'])
-		{
-			case 'create': 
-				$this->_createSubject();
-				break;
-			case 'update':
-				$this->_updateSubject();
-				break;
-			case 'delete':
-				$this->_deleteSubject();
-				break;
-			default:
-				;
-		}
-	}
-	
 	public function actionCreate()
 	{
 		
@@ -88,6 +70,7 @@ class SubjectsynchController extends Controller
 			}
 			
 			$user_role = 0;
+			$user = User::model()->findByPk($user_id);
 			foreach ($_POST['Subject'] as $key => $value) {
 				Accessory::writeLog($key . ' ' . $value);
 				if ($subject->hasAttribute($key)) {
@@ -127,29 +110,64 @@ class SubjectsynchController extends Controller
 			
 			Accessory::writeLog('finished all attributes assignment');
 			
-			if($subject->save()) {
-				//$user = Yii::app()->user;
-				$user = User::model()->findByPk($user_id);
-				
+			$createSuccess = true;
+			
+			if($subject->save()) {	
 				// subject 实体被成功存储到数据库中
-				$user->update_count = $subject->usn;
-				$user->save();
-				// 应该在这里对当前账户的update_count字段解锁
+				// 更新用户账户的update_count
+				$subject = $this->_updateUserUSN($subject, $user);
 				
-				$subject->associateUserToSubject($user, $user_role);
-				
-				$response = array(
-						'id' => $subject->id, 
-						'usn' => $subject->usn,
-						'status_code' => self::RESPONSE_STATUS_GOOD, 
-						'error_message' => '',
-						);
-				Accessory::sendRESTResponse(201, CJSON::encode($response));
-			} else {
+				if (!is_null($subject)) {
+					// 关联新创建的subject和用户
+					$subject->associateUserToSubject($user, $user_role);
+					
+					$response = array(
+							'id' => $subject->id,
+							'usn' => $subject->usn,
+							'status_code' => self::RESPONSE_STATUS_GOOD,
+							'error_message' => '',
+					);
+					Accessory::sendRESTResponse(201, CJSON::encode($response));
+				} else {
+					$createSuccess = false;
+				}
+			} 
+
+			if (!$createSuccess){
 				Accessory::writeLog('subject save failed');
 				// Errors occurred
 				Accessory::warningResponse(self::RESPONSE_STATUS_BAD, 
 											'Subject synch failed');
+			}
+		}
+	}
+	
+	/**
+	 * 更新用户账户的update_count属性值
+	 * @param Subject $subject 与update_count关联的subject实体
+	 * @param User $user 用户账户实体
+	 * @return Subject|NULL 更新用户账户的update_count属性成功时返回带有合法usn的subject实体，否则返回NULL
+	 */
+	private function _updateUserUSN($subject, $user)
+	{
+		try {
+			$attributes = array(
+					'last_update_time' => date('Y-m-d H:i:s'),
+				);
+			$user->updateByPk($user->id, $attributes);
+
+			// 没有异常抛出，返回原始的subject实体
+			return $subject;
+		} catch (StaleObjectError $e) {
+			// 更新用户账户的update_count时遭遇存储冲突异常
+			// 用当前的update_count值更新subject的usn并再次尝试存储更新
+			$newUser = User::model()->findByPk($user->id);
+			$subject->usn = $newUser->update_count;
+			if ($subject->save())
+				$this->_updateUserUSN($subject, $user);
+			else {
+				$subject->delete();
+				return null;
 			}
 		}
 	}
