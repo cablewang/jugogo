@@ -60,6 +60,7 @@ class WeathersynchController extends Controller
 						'System error, please contact Jugaogao customer service.');
 				return;
 			}
+
 			
 			$weather = Weather::model()->findByAttributes(array('note_id'=>$note_id, 'uuid'=>$weather_uuid));
 			if (Weather::isWeatherExist($note_id, $weather_uuid)) {
@@ -86,6 +87,7 @@ class WeathersynchController extends Controller
 				}	
 			} else {
 				$weather=new Weather;
+
 			}
 		
 			//$model->attributes=$_POST['Subject'];

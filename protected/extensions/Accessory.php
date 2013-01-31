@@ -6,10 +6,7 @@
  * @param string $errfile 可选：错误文件名
  */
 function myErrorHandler($errno, $errstr, $errfile = '',$errorline='') {
-	$logFilePath = APP_ROOT . '/log';
-	$logfile = $logFilePath . '/' . 'errors_' . date ( 'Y-m-d' ) . '.log';
-	// 创建log文件目录
-	myCreateDir($logFilePath);
+	$logfile =APP_ROOT . '/log/errors_' . date ( 'Y-m-d' ) . '.log';
 	if (! file_exists ( $logfile )) {
 		if (touch ( $logfile )) {
 			@chmod ( $logfile, 0777 );
@@ -35,17 +32,6 @@ function myExceptionHandler($myexception) {
 	//显示失败页面，可以自定义错误页面
 	echo $myexception->getMessage ();exit;
 }
-
-/**
- * 强制创建文件目录，权限0766基本够用
- */
-function myCreateDir($dirPath)
-{
-	if (!file_exists($dirPath)) {
-		mkdir($dirPath, 0766, true);
-	}
-}
-
 // 帮助类，服务范围——全局
 // 功能方法：UUID生成，压缩UUID，解压UUID，发送email，发送错误报告给管理员，包装和发送REST数据包，解析HTTP状态代码
 //
@@ -57,10 +43,7 @@ class Accessory
 	* @param unknown_type $pre　日子文件前缀，默认为log
 	*/
 	public static function writeLog($errstr,$pre='log') {
-		$logFilePath = APP_ROOT . '/log';
-		$logfile = $logFilePath . '/' .$pre.'_' . date ( 'Y-m-d' ) . '.log';
-		// 创建log文件目录
-		myCreateDir($logFilePath);
+		$logfile =APP_ROOT . '/log/'.$pre.'_' . date ( 'Y-m-d' ) . '.log';
 		if (! file_exists ( $logfile )) {
 			if(touch($logfile)){
 				@chmod ( $logfile, 0777 );

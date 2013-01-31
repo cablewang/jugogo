@@ -83,8 +83,9 @@ class NotesynchController extends Controller
 				}
 			} else {
 				$note = new Note;
+
 			}
-				
+		
 			foreach ($_POST['Note'] as $key => $value) {
 				Accessory::writeLog($key . ' ' . $value);
 				if ($key === 'subject_uuid') {

@@ -73,6 +73,7 @@ class AudiosynchController extends Controller
 						
 					Accessory::warningResponse(self::RESPONSE_STATUS_DUPLICATED_AUDIO,
 							'System error, please contact Jugaogao customer service.');
+
 					return;	
 				} else {
 					// sync task has been processed successfully before
@@ -97,6 +98,7 @@ class AudiosynchController extends Controller
 							self::JGG_AUDIO_PATH_POSTFIX;
 				
 				Accessory::writeLog('subject id: ' . Note::fetchSubjectId($note_id) . 'subject uuid: ' . Note::fetchSubjectUUID($note_id));
+
 				
 				if (!file_exists($filePath)) {
 					mkdir($filePath, 0755, true);

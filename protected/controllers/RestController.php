@@ -114,7 +114,9 @@ class RestController extends Controller
 		$put_vars = CJSON::decode($json, true);
 		$log->lfile(self::JGG_LOG_FILE_PATH);
 		
+
 		Accessory::writeLog($put_vars[id] . ' ' . $put_vars[password]);
+
 	
 		$user_id = $put_vars["id"];
 		$validate = new Eventvalidate;

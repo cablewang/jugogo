@@ -43,13 +43,13 @@ class VieosynchController extends Controller
 	
 	private function _createVideo()
 	{
-		$photo=new Photo;
+		$video = new Video;
 		
-		if(isset($_POST['Audio']))
+		if(isset($_POST['Video']))
 		{
-			$user_id = $_POST['Audio']['user_id'];
-			$note_uuid = pack('h*', $_POST['Audio']['owner_uuid']);
-			$audio_uuid = pack('h*', $_POST['Audio']['uuid']);
+			$user_id = $_POST['Video']['user_id'];
+			$note_uuid = Accessory::packUUID($_POST['Video']['owner_uuid']);
+			$audio_uuid = Accessory::packUUID($_POST['Video']['uuid']);
 			$note_id = _fetchNoteId($user_id, $note_uuid);
 			if ($note_id == NULL) {
 		
@@ -142,24 +142,4 @@ class VieosynchController extends Controller
 		
 	}
 	
-	private function _warningResponse($statusCode, $message)
-	{
-		$response = array(
-				'status_code' => $statusCode,
-				'error_message' => $message,
-		);
-		$this->_sendResponse(500, CJSON::encode($response));
-	}
-	
-	private function _sendResponse ($status = 200, $body = '', $content_type = 'text/html')
-	{
-		// set the status
-		$status_header = 'HTTP/1.1' . $status . ' ' . Accessory::getStatusCodeMessage($status);
-		header($status_header);
-		// and the content type
-		header('Content-type: ' . $content_type);
-	
-		echo $body;
-		Yii::app()->end();
-	}
 }
