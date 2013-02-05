@@ -131,13 +131,15 @@ class SubjectsynchController extends Controller
 				} else {
 					$createSuccess = false;
 				}
-			} 
+			} else {
+				$createSuccess = false;
+			}
 
 			if (!$createSuccess){
 				Accessory::writeLog('subject save failed');
 				// Errors occurred
 				Accessory::warningResponse(self::RESPONSE_STATUS_BAD, 
-											'Subject synch failed');
+											'Subject sync failed');
 			}
 		}
 	}

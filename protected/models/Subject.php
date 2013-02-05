@@ -134,10 +134,17 @@ class Subject extends CActiveRecord
 	}
 
 	// return bool value for whether any subject exist with specific user Id and UUID
-	public static function isSubjectExist($user_id, $uuid)
+	public static function checkSubjectWithUserIDAndUUID($user_id, $uuid)
 	{
 		$subject = Subject::fetchSubject($user_id, $uuid);
-		return ($subject != NULL);
+		return ($subject !== NULL);
+	}
+
+	// return bool value for whether any subject exist with specific user Id and UUID
+	public static function isSubjectExist($subject_id)
+	{
+		$subject = Subject::model()->findByPk($subject_id);
+		return ($subject !== NULL);
 	}
 	
 	// return subject for particular user Id and UUID, return NULL when not found

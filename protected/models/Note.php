@@ -166,4 +166,13 @@ class Note extends CActiveRecord
 		$subject = Subject::model()->findByPk($subject_id);
 		return $subject->uuid;
 	}
+	
+	// return bool value for whether user is exist for specific user Id
+	public static function isNoteExist($note_id)
+	{
+		if (Note::model()->findByPk($note_id))
+			return true;
+		else
+			return false;
+	}
 }

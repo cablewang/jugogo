@@ -172,4 +172,44 @@ class User extends OptimistLockingActiveRecord
 	{
 		return 'update_count';
 	}
+	
+	/**
+	 * 更新用户账户的update_count属性值
+	 * @param Subject $subject 与update_count关联的subject实体
+	 * @param User $user 用户账户实体
+	 * @return Subject|NULL 更新用户账户的update_count属性成功时返回带有合法usn的subject实体，否则返回NULL
+	 */
+	public static function updateUserUSN($object, $user)
+	{
+		try {
+			$attributes = array(
+					'last_update_time' => date('Y-m-d H:i:s'),
+			);
+			$user->updateByPk($user->id, $attributes);
+	
+			// 没有异常抛出，返回原始的subject实体
+			return $object;
+		} catch (StaleObjectError $e) {
+			// 更新用户账户的update_count时遭遇存储冲突异常
+			// 用当前的update_count值更新subject的usn并再次尝试存储更新
+			$newUser = User::model()->findByPk($user->id);
+			$object->usn = $newUser->update_count;
+			if ($object->save())
+				$this->updateUserUSN($object, $user);
+			else {
+				$object->delete();
+				return null;
+			}
+		}
+	}
+	
+	public function increaseUSN()
+	{
+		try {
+			$attributes = array ('last_update_time' => date('Y-m-d H:i:s'));
+			$this->updateByPk($this->id, $attributes);
+		} catch (StaleObjectError $e) {
+			throw $e;
+		}
+	}
 }

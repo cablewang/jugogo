@@ -1,4 +1,7 @@
 <?php 
+
+require_once(APP_ROOT.'/fastdfs/fastDFS.php');
+
 class AvatarsynchController extends Controller
 {
 	
@@ -28,13 +31,13 @@ class AvatarsynchController extends Controller
 		if(isset($_POST['Avatar']))
 		{
 			$user_id = $_POST['Avatar']['user_id'];
-			$subject_uuid = Accessory::packUUID($_POST['Avatar']['owner_uuid']);
+			$subject_id = $_POST['Avatar']['subject_id'];
 			
-			Accessory::writeLog('subject uuid: ' . $subject_uuid);
+			Accessory::writeLog('subject id: ' . $subject_id);
 			
 			$avatar_uuid = Accessory::packUUID($_POST['Avatar']['uuid']);
-			$subject_id = Subject::fetchSubjectId($user_id, $subject_uuid);
-			if ($subject_id == NULL) {
+			//$subject_id = Subject::fetchSubjectId($user_id, $subject_uuid);
+			if (!Subject::isSubjectExist($subject_id)) {
 		
 				Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_SUBJECT_NOT_EXIST, 
 												'Note is not exist', 
@@ -45,12 +48,8 @@ class AvatarsynchController extends Controller
 										'System error, please contact Jugaogao customer service.');
 				
 			}
-
-			// 加载User实体，稍后获取USN时使用
-			$user = User::model()->findByPk($user_id);
 			
-			$avatar = Avatar::model()->findByAttributes(array('subject_id'=>$subject_id, 'uuid'=>$avatar_uuid));
-			if ($avatar !== NULL) {
+			if (Avatar::isAvatarExist($subject_id, $avatar_uuid)) {
 				if (strtotime($avatar->create_time) !== strtotime($_POST['Avatar']['create_time'])) {
 					Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_DUPLICATED_AVATAR,
 														'Duplicated Avatar',
@@ -61,97 +60,128 @@ class AvatarsynchController extends Controller
 												'System error, please contact Jugaogao customer service.');
 				
 				} else {
-					// sync task has been processed successfully before
-					// send a good response to the App so that it knows to remove the task
-					$response = array(
-							"id" => $avatar->id,
-							'status_code' => self::RESPONSE_STATUS_GOOD,
-							'sync_status_code' => self::SYNC_STATUS_TASK_DONE_BEFORE,
-							'error_message' => '',
-					);
-					Accessory::sendRESTResponse(201, CJSON::encode($response));
-					
+					if ($avatar->dfs_avatar_thumb_name !== null && $avatar->dfs_avatar_name !== null) {
+						// sync task has been processed successfully before
+						// send a good response to the App so that it knows to remove the task
+						$response = array(
+								'id' => $avatar->id,
+								'usn' => $avatar->usn,
+								'status_code' => self::RESPONSE_STATUS_GOOD,
+								'sync_status_code' => self::SYNC_STATUS_TASK_DONE_BEFORE,
+								'error_message' => '',
+						);
+						Accessory::sendRESTResponse(201, CJSON::encode($response));
+					} else {
+						$objectExist = true;
+					}
 				}
 			} else {
 				$avatar = new Avatar;
+				$objectExist = false;
 			}
 			
 			if (isset($_FILES)) {
-				$filePath = $this->_targetFilePath($user_id, $_POST['Avatar']['owner_uuid']);
-				if (!file_exists($filePath)) {
-					mkdir($filePath, 0755, true);
-				}
+				$dfsManager = new FDFS();
+				
 				foreach ($_FILES as $file) {
-					$fileDestination = $filePath . '/' . $file['name'];
-					if (!move_uploaded_file($file['tmp_name'], $fileDestination)) {
+					$dfsFileHandler = $dfsManager->upload($file['tmp_name']);
+					if ($dfsFileHandler === false) {
 						// Errors occurred
 						$response = array(
 										'status_code' => self::RESPONSE_STATUS_BAD,
 										'error_message' => 'File upload failure',
 									);
 						Accessory::warningResponse(self::RESPONSE_STATUS_FILE_UPLOAD_FAILED, 
-													'File upload failure');
+													'File '. $file['tmp_name'] . ' upload failure');
 						
+					} else {
+						if ($avatar->dfs_group_name === null)
+							$avatar->dfs_group_name = $dfsFileHandler['group_name'];
+						if (stristr($file['name'], 'thumb')) {
+							// thumb file
+							$avatar->dfs_avatar_thumb_name = $dfsFileHandler['filename'];
+						} else { 
+							// normal display file
+							$avatar->dfs_avatar_name = $dfsFileHandler['filename'];
+						}
 					}
 				}
 			}
-				
-			foreach ($_POST['Avatar'] as $key => $value) {
-				Accessory::writeLog($key . ' ' . $value);
-				if ($avatar->hasAttribute($key)) {
-					switch ($key) {
-						
-						case 'last_update_time':
-							break;
-							
-						case 'uuid':
-							$avatar->$key = Accessory::packUUID($value);
-							break;
 
-						case 'usn':
-								// 以下操作前应该锁死当前账号的update_count字段
-								$avatar->$key = $user->update_count + 1;
+			if (!$objectExist) { 
+				// 加载User实体，稍后获取USN时使用
+				$user = User::model()->findByPk($user_id);
+				foreach ($_POST['Avatar'] as $key => $value) {
+					Accessory::writeLog($key . ' ' . $value);
+					if ($avatar->hasAttribute($key)) {
+						switch ($key) {
+							
+							case 'last_update_time':
 								break;
-						default:
-							$avatar->$key = $value;
-					}
-		
-				} else {
-					switch ($key) {
-						case 'user_id':
-						case 'server_id':
-							break;
-						
-						case 'owner_uuid':
-							$avatar->subject_id = $subject_id;
-							break;
-				
-						default:
-							Accessory::warningResponse(self::RESPONSE_STATUS_PARAM_INVALID,
-							'Parameter is not allowed.');
-					}
+								
+							case 'uuid':
+								$avatar->$key = Accessory::packUUID($value);
+								break;
+	
+							case 'usn':
+									// 以下操作前应该锁死当前账号的update_count字段
+									$avatar->$key = $user->update_count + 1;
+									break;
+									
+							default:
+								$avatar->$key = $value;
+						}
+			
+					} else {
+						switch ($key) {
+							case 'user_id':
+							//case 'server_id':
+								break;
 					
+							default:
+								Accessory::warningResponse(self::RESPONSE_STATUS_PARAM_INVALID,
+								'Parameter is not allowed.');
+						}
+						
+					}
 				}
+				Accessory::writeLog('uuid: ' . $avatar->uuid . 
+								' subject id: ' . $avatar->subject_id .
+								' name: '. $avatar->avatar_name . 
+								' thumb name: ' . $avatar->avatar_thumb_name .
+								' create time: ' . $avatar->create_time );
 			}
-			Accessory::writeLog('uuid: ' . $avatar->uuid . 
-							' subject id: ' . $avatar->subject_id .
-							' name: '. $avatar->avatar_name . 
-							' thumb name: ' . $avatar->avatar_thumb_name .
-							' create time: ' . $avatar->create_time );
 			//print_r($avatar);	
+			
+			$createSuccess = true;
+			
 			if($avatar->save()) {
-				$response = array(
-						"id" => $avatar->id,
+
+				// avatar 实体已经被成功存储到数据库中
+				if (!$objectExist) {
+					// 更新用户账户的update_count
+					$avatar = User::updateUserUSN($avatar, $user);
+				}
+				
+				if (!is_null($avatar)) {
+					$response = array(
+						'id' => $avatar->id,
+						'usn' => $avatar->usn,
 						'status_code' => self::RESPONSE_STATUS_GOOD,
 						'error_message' => '',
-				);
-				Accessory::sendRESTResponse(201, CJSON::encode($response));
-				
+					);
+					Accessory::sendRESTResponse(201, CJSON::encode($response));
+				} else {
+					$createSuccess = false;
+				}
 			} else {
+				$createSuccess = false;
+			}
+			if (!$createSuccess) {
+				Accessory::writeLog('avatar save failed');
 				// Errors occurred
-				Accessory::warningResponse(self::RESPONSE_STATUS_BAD, 
-											'Avatar synch failed');
-				
+				Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
+						'Avatar sync failed');
 			}
 		}
 	}
@@ -166,13 +196,5 @@ class AvatarsynchController extends Controller
 		
 	}
 	
-	
-	private function _targetFilePath($user_id, $subject_uuid)
-	{
-		return self::JGG_USER_PATH_PREFIX . '/' .
-				$user_id . '/' .
-				$subject_uuid . '/' .
-				self::JGG_PROFILE_PATH_POSTFIX;
-	}
 }
 	

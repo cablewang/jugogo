@@ -1,4 +1,7 @@
 <?php 
+
+require_once(APP_ROOT.'/fastdfs/fastDFS.php');
+
 class PhotosynchController extends Controller
 {
 	
@@ -23,46 +26,26 @@ class PhotosynchController extends Controller
 	Const JGG_USER_PATH_PREFIX = 'private';
 
 	/**
-	 * process photo synch task sent from the App
+	 * 创建Photo实体
 	 */
-	public function actionProcesssynch()
+	public function actionCreate()
 	{
-		switch ($_POST['change_type'])
-		{
-			case 'create':
-				$this->_createPhoto();
-				break;
-			case 'update':
-				$this->_updatePhoto();
-				break;
-			case 'delete':
-				$this->_deletePhoto();
-				break;
-			default:
-				;
-		}
-	}
-	
-	private function _createPhoto()
-	{
-		Accessory::writeLog('create photo' . $_POST['Photo']['user_id']);
+		Accessory::writeLog('create photo for user: ' . $_POST['Photo']['user_id']);
 		
 		if(isset($_POST['Photo']))
 		{
 			$user_id = $_POST['Photo']['user_id'];
-			$note_uuid = pack('h*', $_POST['Photo']['owner_uuid']);
-			$photo_uuid = pack('h*', $_POST['Photo']['uuid']);
-			$note_id = Note::fetchNoteId($user_id, $note_uuid);
-			if ($note_id == NULL) {
-		
+			$note_id = $_POST['Photo']['note_id'];
+			Accessory::writeLog($note_id);
+			$photo_uuid = Accessory::packUUID($_POST['Photo']['uuid']);
+			if (!Note::isNoteExist($note_id)) {
 				Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_NOTE_NOT_EXIST, 
 												'Note is not exist', 
-												array('photo/note_uuid'=>$note_uuid, 
+												array('photo/note_id'=>$note_id, 
 														'photo/uuid'=>$_POST['Photo']['uuid']));
 		
 				Accessory::warningResponse(self::RESPONSE_STATUS_NOTE_NOT_EXIST, 
 										'System error, please contact Jugaogao customer service.');
-				return;
 			}
 
 			$photo = Photo::model()->findByAttributes(array('note_id'=>$note_id, 'uuid'=>$photo_uuid));
@@ -75,98 +58,101 @@ class PhotosynchController extends Controller
 			
 					Accessory::warningResponse(self::RESPONSE_STATUS_DUPLICATED_PHOTO,
 												'System error, please contact Jugaogao customer service.');
-				return;
 				} else {
 					// sync task has been processed successfully before
 					// send a good response to the App so that it knows to remove the task
 					$response = array(
-							"id" => $photo->id,
+							'id' => $photo->id,
 							'status_code' => self::RESPONSE_STATUS_GOOD,
 							'sync_status_code' => self::SYNC_STATUS_TASK_DONE_BEFORE,
 							'error_message' => '',
 					);
 					Accessory::sendRESTResponse(201, CJSON::encode($response));
-					return;
 				}
 			} else {
-				$photo=new Photo;
+				$photo = new Photo;
 			}
 			
 			if (isset($_FILES)) {
-				$filePath = self::JGG_USER_PATH_PREFIX . '/' . 
-							$user_id . '/' . 
-							Accessory::convertToPhpValue(Note::fetchSubjectUUID($note_id)) . '/' . 
-							self::JGG_PHOTO_PATH_POSTFIX;
-				if (!file_exists($filePath)) {
-					mkdir($filePath, 0755, true);
-				}
+				
+				$dfsManager = new FDFS();
+				
 				foreach ($_FILES as $file) {
-					$fileDestination = $filePath . '/' . $file['name'];
-					if (!move_uploaded_file($file['tmp_name'], $fileDestination)) {
+					//Accessory::writeLog($file['name']);
+					$dfsFileHandler = $dfsManager->upload($file['tmp_name']);
+					if ($dfsFileHandler === false) {
 						// Errors occurred
 						$response = array(
 								'status_code' => self::RESPONSE_STATUS_BAD,
 								'error_message' => 'File upload failure',
 						);
-						Accessory::warningResponse(self::RESPONSE_STATUS_FILE_UPLOAD_FAILED, 
-													'File upload failure');
-						return;
+						Accessory::warningResponse(self::RESPONSE_STATUS_FILE_UPLOAD_FAILED,
+						'File '. $file['tmp_name'] . ' upload failure');
+				
+					} else {
+						if ($photo->dfs_group_name === null)
+							$photo->dfs_group_name = $dfsFileHandler['group_name'];
+						if (stristr($file['name'], 'thumb')) {
+							// thumb file
+							$photo->dfs_thumb_name = $dfsFileHandler['filename'];
+						} elseif (stristr($file['name'], 'display')) {
+							// normal display file
+							$photo->dfs_display_file_name = $dfsFileHandler['filename'];
+						} else {
+							// original file
+							$photo->dfs_original_file_name = $dfsFileHandler['filename'];
+						}
 					}
 				}
+				
 			}
 				
-			//$model->attributes=$_POST['Subject'];
 			foreach ($_POST['Photo'] as $key => $value) {
-				Accessory::writeLog($key . ' ' . $value);
-				if ($key === 'user_id' || $key === 'server_id') {
-					continue;
-				}
-				if ($key === 'owner_uuid') {
-					$photo->note_id = $note_id;
-					continue;
-				}
+				Accessory::writeLog($key . ': ' . $value);
+				
 				if ($photo->hasAttribute($key)) {
 					switch ($key) {
+						
 						case 'last_update_time':
 							break;
+							
 						case 'uuid':
-							$photo->$key = pack('h*', $value);
+							$photo->$key = $photo_uuid;
 							break;
+							
 						default:
 							$photo->$key = $value;
 					}
 		
 				} else {
-					Accessory::warningResponse(self::RESPONSE_STATUS_PARAM_INVALID, 
-												'Parameter is not allowed.');
+					switch ($key) {
+						case 'user_id':
+						case 'server_id':
+							break;
+						
+						default:
+							Accessory::warningResponse(self::RESPONSE_STATUS_PARAM_INVALID,
+									'Parameter is not allowed.');
+					}
+					
 				}
 			}
 				
 			if($photo->save()) {
 				$response = array(
-						"id" => $photo->id,
+						'id' => $photo->id,
 						'status_code' => self::RESPONSE_STATUS_GOOD,
 						'error_message' => '',
 				);
 				Accessory::sendRESTResponse(201, CJSON::encode($response));
-				return;
 			} else {
 				// Errors occurred
 				Accessory::warningResponse(self::RESPONSE_STATUS_BAD, 
 											'Photo synch failed');
-				return;
 			}
 		}
 	}
 	
-	private function _updatePhoto()
-	{
-		
-	}
 	
-	private function _deletePhoto()
-	{
-		
-	}
 }
 	

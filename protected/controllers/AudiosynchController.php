@@ -1,4 +1,7 @@
 <?php 
+
+require_once(APP_ROOT.'/fastdfs/fastDFS.php');
+
 class AudiosynchController extends Controller
 {
 	
@@ -26,42 +29,22 @@ class AudiosynchController extends Controller
 	/**
 	 * process audio synch task sent from the App
 	 */
-	public function actionProcesssynch()
-	{
-		switch ($_POST['change_type'])
-		{
-			case 'create':
-				$this->_createAudio();
-				break;
-			case 'update':
-				$this->_updateAudio();
-				break;
-			case 'delete':
-				$this->_deleteAudio();
-				break;
-			default:
-				;
-		}
-	}
-	
-	private function _createAudio()
+	public function actionCreate()
 	{
 		if(isset($_POST['Audio']))
 		{
 			$user_id = $_POST['Audio']['user_id'];
-			$note_uuid = pack('h*', $_POST['Audio']['owner_uuid']);
-			$audio_uuid = pack('h*', $_POST['Audio']['uuid']);
-			$note_id = Note::fetchNoteId($user_id, $note_uuid);
-			if ($note_id === NULL) {
-		
+			$note_id = $_POST['Audio']['note_id'];
+			Accessory::writeLog('note id: '. $note_id);
+			$audio_uuid = Accessory::packUUID($_POST['Audio']['uuid']);
+			if (! Note::isNoteExist($note_id)) {
 				Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_NOTE_NOT_EXIST,
-						'Note is not exist',
-						array('audio/note_uuid'=>$note_uuid,
+							'Note '. $note_id . ' is not exist',
+						array('audio/note_id'=>$note_id,
 								'audio/uuid'=>$_POST['Audio']['uuid']));
 		
 				Accessory::warningResponse(self::RESPONSE_STATUS_NOTE_NOT_EXIST,
 						'System error, please contact Jugaogao customer service.');
-				return;
 			}
 			$audio = Audio::model()->findByAttributes(array('note_id'=>$note_id, 'uuid'=>$audio_uuid));
 			if ($audio !== NULL) {
@@ -73,103 +56,95 @@ class AudiosynchController extends Controller
 						
 					Accessory::warningResponse(self::RESPONSE_STATUS_DUPLICATED_AUDIO,
 							'System error, please contact Jugaogao customer service.');
-
-					return;	
 				} else {
 					// sync task has been processed successfully before
 					// send a good response to the App so that it knows to remove the task
 					$response = array(
-							"id" => $audio->id,
+							'id' => $audio->id,
 							'status_code' => self::RESPONSE_STATUS_GOOD,
 							'sync_status_code' => self::SYNC_STATUS_TASK_DONE_BEFORE,
 							'error_message' => '',
 					);
 					Accessory::sendRESTResponse(201, CJSON::encode($response));
-					return;
 				}
 			} else {
 				$audio = new Audio;
 			}
 				
 			if (isset($_FILES)) {
-				$filePath = self::JGG_USER_PATH_PREFIX . '/' . 
-							$user_id . '/' . 
-							Accessory::convertToPhpValue(Note::fetchSubjectUUID($note_id)) . '/' . 
-							self::JGG_AUDIO_PATH_POSTFIX;
 				
-				Accessory::writeLog('subject id: ' . Note::fetchSubjectId($note_id) . 'subject uuid: ' . Note::fetchSubjectUUID($note_id));
-
+				$dfsManager = new FDFS();
 				
-				if (!file_exists($filePath)) {
-					mkdir($filePath, 0755, true);
-				}
 				foreach ($_FILES as $file) {
-					$fileDestination = $filePath . '/' . $file['name'];
-					if (!move_uploaded_file($file['tmp_name'], $fileDestination)) {
+					//Accessory::writeLog($file['tmp_name']);
+					$dfsFileHandler = $dfsManager->upload($file['tmp_name']);
+					if ($dfsFileHandler === false) {
 						// Errors occurred
 						$response = array(
 								'status_code' => self::RESPONSE_STATUS_BAD,
 								'error_message' => 'File upload failure',
 						);
 						Accessory::warningResponse(self::RESPONSE_STATUS_FILE_UPLOAD_FAILED,
-								'File upload failure');
-						return;
+						'File '. $file['tmp_name'] . ' upload failure');
+				
+					} else {
+						if ($audio->dfs_group_name === null)
+							$audio->dfs_group_name = $dfsFileHandler['group_name'];
+						if (stristr($file['name'], 'mp3')) {
+							// thumb file
+							$audio->dfs_mp3_file_name = $dfsFileHandler['filename'];
+						} else {
+							// original file
+							$audio->dfs_original_file_name = $dfsFileHandler['filename'];
+						}
 					}
 				}
 			}
 		
-			//$model->attributes=$_POST['Subject'];
 			foreach ($_POST['Audio'] as $key => $value) {
-				Accessory::writeLog($key . ' ' . $value);
-				if ($key === 'user_id' || $key === 'server_id') {
-					continue;
-				}
-				if ($key === 'owner_uuid') {
-					$audio->note_id = $note_id;
-					continue;
-				}
+				Accessory::writeLog($key . ': ' . $value);
 				if ($audio->hasAttribute($key)) {
 					switch ($key) {
+						
 						case 'last_update_time':
 							break;
+							
 						case 'uuid':
-							$audio->$key = pack('h*', $value);
+							$audio->$key = $audio_uuid;
 							break;
+							
 						default:
 							$audio->$key = $value;
 					}
 		
 				} else {
-					Accessory::warningResponse(self::RESPONSE_STATUS_PARAM_INVALID,
+					switch ($key) {
+						case 'user_id':
+						case 'server_id':
+							break;
+							
+						default:
+							Accessory::warningResponse(self::RESPONSE_STATUS_PARAM_INVALID,
 							'Parameter is not allowed.');
+					}
+					
 				}
 			}
 		
 			if($audio->save()) {
 				$response = array(
-						"id" => $audio->id,
+						'id' => $audio->id,
 						'status_code' => self::RESPONSE_STATUS_GOOD,
 						'error_message' => '',
 				);
 				Accessory::sendRESTResponse(201, CJSON::encode($response));
-				return;
 			} else {
 				// Errors occurred
 				Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
 						'Audio synch failed');
-				return;
 			}
 		}
 	}
 	
-	private function _updateAudio()
-	{
-	
-	}
-	
-	private function _deleteAudio()
-	{
-	
-	}
 }
 	

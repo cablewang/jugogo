@@ -93,10 +93,11 @@ class RestController extends Controller
 			Accessory::warningResponse(self::RESPONSE_STATUS_USER_NOT_EXIST,
 										'系统错误, 请联系举高高客服。');
 		}
-		// 返回测试数据。未来需要用正式数据代替
+		
+		$user = User::model()->findByPk($user_id);
 		$response = array(
-					'update_count' => 0,
-					'full_sync_before' => date('Y-m-d H:i:s'),
+					'update_count' => $user->update_count,
+					'full_sync_before' => $user->full_sync_before,
 				);
 		Accessory::writeLog('sending response: full_sync_before' . $response["full_sync_before"]);
 		Accessory::sendRESTResponse(201, CJSON::encode($response));

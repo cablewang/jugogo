@@ -117,4 +117,13 @@ class Avatar extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	// return bool value for whether avatar is exist for specific subject id and avatar uuid
+	public static function isAvatarExist($subject_id, $avatar_uuid)
+	{
+		if (Avatar::model()->findByAttributes(array('subject_id'=>$subject_id, 'uuid'=>$avatar_uuid)))
+			return true;
+		else
+			return false;
+	}
 }

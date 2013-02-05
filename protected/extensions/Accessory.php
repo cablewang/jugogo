@@ -42,14 +42,21 @@ class Accessory
 	* @param mix $errstr 数组或字符串
 	* @param unknown_type $pre　日子文件前缀，默认为log
 	*/
-	public static function writeLog($errstr,$pre='log') {
+	public static function writeLog($logstr, $pre='log') {
 		$logfile =APP_ROOT . '/log/'.$pre.'_' . date ( 'Y-m-d' ) . '.log';
 		if (! file_exists ( $logfile )) {
 			if(touch($logfile)){
 				@chmod ( $logfile, 0777 );
 			}
 		}
-		error_log ( date ( 'Y-m-d H:i:s' ) .':'.(is_array($errstr)?json_encode($errstr):$errstr) .PHP_EOL, 3, $logfile );
+		// define script name
+		$script_name = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
+		if (is_array($logstr)) {
+			$logstr["script_name"] = $script_name;
+		} else {
+			$logstr = '(' . $script_name . ') ' . $logstr;
+		}
+		error_log ( date ( 'Y-m-d H:i:s' ) .':'.(is_array($logstr) ? json_encode($logstr) : $logstr) .PHP_EOL, 3, $logfile );
 	}
 	
 	public static function gen_uuid() {
@@ -173,7 +180,7 @@ class Accessory
 	}
 	
 	/**
-	 * 返回HTTP状态代码
+	 * 返回HTTP状态代码对应的状态信息
 	 * @param integer $status HTTP状态代码
 	 */
 	public static function getStatusCodeMessage($status)
@@ -192,6 +199,20 @@ class Accessory
 				501 => 'Not Implemented',
 		);
 		return (isset($codes[$status])) ? $codes[$status] : '';
+	}
+	
+	/**
+	 * 返回REST API状态代码对应的状态信息
+	 * @param integer $status HTTP状态代码
+	 */
+	public static function getRESTStatusMessage($statusCode){
+		$statusMessages = Array(
+				101 => 'RESPONSE_STATUS_PARAM_INVALID',
+				102 => 'RESPONSE_STATUS_FILE_UPLOAD_FAILED',
+				104 => 'RESPONSE_STATUS_WRONG_METHOD',
+				300 => 'SYNC_STATUS_TASK_DONE_BEFORE',
+		);
+		return (isset($statusMessages[$statusCode])) ? $statusMessages[$statusCode] : '';
 	}
 	
 	private static function sendResponse($status = 200, $body = '', $content_type = 'text/html')

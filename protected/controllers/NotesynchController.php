@@ -17,35 +17,15 @@ class NotesynchController extends Controller
 	Const RESPONSE_STATUS_NOTE_NOT_EXIST = '805';
 	Const RESPONSE_STATUS_PARAM_INVALID = '101';
 	Const RESPONSE_STATUS_FILE_UPLOAD_FAILED = '102';
+	Const RESPONSE_STATUS_WRONG_METHOD = '104';
 	Const JGG_IMAGE_PATH_PREFIX = 'images/';
 	
-	/**
-	 * process note synch task sent from the App
-	 */
-	public function actionProcesssynch()
-	{
-		switch ($_POST['change_type'])
-		{
-			case 'create':
-				$this->_createNote();
-				break;
-			case 'update':
-				$this->_updateNote();
-				break;
-			case 'delete':
-				$this->_deleteNote();
-				break;
-			default:
-				;
-		}
-	}
-	
-	private function _createNote()
+	public function actionCreate()
 	{
 		if(isset($_POST['Note']))
 		{
 			$user_id = $_POST['Note']['user_id'];
-			$subject_uuid = pack('h*', $_POST['Note']['owner_uuid']);
+			$subject_id = $_POST['Note']['subject_id'];
 			$note_uuid = pack('h*', $_POST['Note']['uuid']);
 			if (!User::isUserExist($user_id)) {
 	
@@ -59,7 +39,7 @@ class NotesynchController extends Controller
 				return;
 			}
 	
-			$note = Note::model()->findByAttributes(array('user_id'=>$user_id, 'uuid'=>$note_uuid));
+			$note = Note::model()->findByAttributes(array('user_id'=>$user_id, 'subject_id'=>$subject_id, 'uuid'=>$note_uuid));
 			if ($note !== NULL) {
 				if (strtotime($note->save_time) !== strtotime($_POST['Note']['save_time'])) {
 					Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_DUPLICATED_NOTE,
@@ -73,7 +53,8 @@ class NotesynchController extends Controller
 					// sync task has been processed successfully before
 					// send a good response to the App so that it knows to remove the task
 					$response = array(
-							"id" => $note->id,
+							'id' => $note->id,
+							'usn' => $note->usn,
 							'status_code' => self::RESPONSE_STATUS_GOOD,
 							'sync_status_code' => self::SYNC_STATUS_TASK_DONE_BEFORE,
 							'error_message' => '',
@@ -83,56 +64,148 @@ class NotesynchController extends Controller
 				}
 			} else {
 				$note = new Note;
-
 			}
 		
 			foreach ($_POST['Note'] as $key => $value) {
 				Accessory::writeLog($key . ' ' . $value);
-				if ($key === 'subject_uuid') {
-					$note->subject_id = Subject::fetchSubjectId($user_id, $subject_uuid);
-					continue;
-				}
-				if ($key === 'owner_uuid') {
-					continue;
-				}
 				if ($note->hasAttribute($key)) {
 					switch ($key) {
+						
 						case 'last_update_time':
 							break;
+							
 						case 'uuid':
-							$note->$key = pack('h*', $value);
+							$note->$key = Accessory::packUUID($value);
 							break;
+							
+						case 'usn':
+							break;
+							
 						default:
 							$note->$key = $value;
 					}
 	
 				} else {
 					Accessory::warningResponse(self::RESPONSE_STATUS_PARAM_INVALID,
-							'Parameter is not allowed.');
+							'Parameter ' . $key . 'is not allowed.');
 				}
 			}
 			
-			foreach ($note->getAttributes() as $key => $value) {
-				Accessory::writeLog('note attribute: ' . $key . ' ' . $value);
-			}
-			
-			if($note->save()) {
+			$note = DBTransactionManager::saveObjectWithUSN($note, $user_id);
+			if($note !== null) {
 				$response = array(
 						'id' => $note->id,
+						'usn' => $note->usn,
 						'status_code' => self::RESPONSE_STATUS_GOOD,
 						'error_message' => '',
 				);
 				Accessory::sendRESTResponse(201, CJSON::encode($response));
-				return;
 			} else {
 				// Errors occurred
 				Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
-						'Note synch failed');
-				return;
+						'Note sync failed');
 			}
 		}
 	}
+
+	public function actionUpdate()
+	{
+		if(isset($_GET['id']))
+		{
+			$note_id = $_GET['id'];
+			Accessory::writeLog('note id: ' . $note_id);
+			
+			$user_id = $_POST['Note']['user_id'];
+			Accessory::writeLog($user_id);
+			
+			$subject_id = $_POST['Note']['subject_id'];
+			if (!User::isUserExist($user_id)) {
 	
+				Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_USER_NOT_EXIST,
+						'user is not exist',
+				array('note/user_id'=>$user_id,
+						'note/id'=>$_POST['Note']['server_id']));
+	
+				Accessory::warningResponse(self::RESPONSE_STATUS_USER_NOT_EXIST, 'System error,
+						please contact Jugaogao customer service.');
+			}
+	
+			$note = Note::model()->findByPk($note_id);
+			if ($note !== NULL) {
+				if (strtotime($note->save_time) !== strtotime($_POST['Note']['save_time'])) {
+					Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_DUPLICATED_NOTE,
+						'duplicated Note',
+					array('note/id'=>$_POST['Note']['server_id']));
+	
+					Accessory::warningResponse(self::RESPONSE_STATUS_DUPLICATED_NOTE,
+						'System error, please contact Jugaogao customer service.');
+				} else {
+					if ($note->usn == $_POST['Note']['usn']) {
+						// sync task has been processed successfully before
+						// send a good response to the App so that it knows to remove the task
+						$response = array(
+							'id' => $note->id,
+							'usn' => $note->usn,
+							'status_code' => self::RESPONSE_STATUS_GOOD,
+							'sync_status_code' => self::SYNC_STATUS_TASK_DONE_BEFORE,
+							'error_message' => '',
+						);
+						Accessory::sendRESTResponse(201, CJSON::encode($response));
+					}
+				}
+			} else {
+				Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_WRONG_METHOD,
+						Accessory::getRESTStatusMessage(self::RESPONSE_STATUS_WRONG_METHOD),
+						array('note/id'=>$_POST['Note']['server_id']));
+	
+				Accessory::warningResponse(self::RESPONSE_STATUS_WRONG_METHOD,
+						'System error, please contact Jugaogao customer service.');
+			}
+	
+			foreach ($_POST['Note'] as $key => $value) {
+				Accessory::writeLog($key . ' ' . $value);
+				if ($note->hasAttribute($key)) {
+					switch ($key) {
+								
+						case 'uuid':
+							$note->$key = Accessory::packUUID($value);
+							break;
+								
+						case 'usn':
+							break;
+								
+						default:
+							$note->$key = $value;
+					}
+	
+				} else {
+					if ($key == 'server_id') {
+						;
+					} else {
+						Accessory::warningResponse(self::RESPONSE_STATUS_PARAM_INVALID,
+								'Parameter ' . $key . ' is not allowed.');
+					}
+				}
+			}
+
+			// update 
+			$note = DBTransactionManager::saveObjectWithUSN($note, $user_id);
+			
+			if($note !== null) {
+				$response = array(
+						'id' => $note->id,
+						'usn' => $note->usn,
+						'status_code' => self::RESPONSE_STATUS_GOOD,
+						'error_message' => '',
+				);
+				Accessory::sendRESTResponse(201, CJSON::encode($response));
+			} else {
+				// Errors occurred
+				Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
+				'Note sync failed');
+			}
+		}
+	}
 	private function _updateNote()
 	{
 	

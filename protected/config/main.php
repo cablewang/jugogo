@@ -58,28 +58,24 @@ return array(
 				// 用户登录
 				array('userrest/signin', 'pattern'=>'api/<model:signin>', 'verb'=>'PUT'),
 				
-				// 密码重置（功能尚未完成）
-				array('userrest/resetpassword', 'pattern'=>'api/<model:restpassword>', 'verb'=>'PUT'),
-				
-				// 下载某一用户的所有记录对象和用户信息
-				array('userrest/fetchsubjects', 'pattern'=>'api/<model:fetchsubjects>', 'verb'=>'GET'),
-				
 				// 以下是各个实体的同步功能，同步功能包括上传创建，下载读取，上传修改，和客户端删除
 				
-				// subject实体的同步功能
+				// 创建subject实体
 				array('subjectsynch/create', 'pattern'=>'api/subject/', 'verb'=>'POST'),
 				
-				// avatar实体的同步功能
+				// 创建avatar实体
 				array('avatarsynch/create', 'pattern'=>'api/avatar/', 'verb'=>'POST'),
 				
-				// note实体的同步功能
-				array('notesynch/processsynch', 'pattern'=>'api/synch/<model:note>', 'verb'=>'POST'),
+				// 创建note实体
+				array('notesynch/create', 'pattern'=>'api/note/', 'verb'=>'POST'),
+				// 修改note实体
+				array('notesynch/update', 'pattern'=>'api/note/<id:\w+>', 'verb'=>'POST'),
 				
-				// photo实体的同步功能
-				array('photosynch/processsynch', 'pattern'=>'api/synch/<model:photo>', 'verb'=>'POST'),
+				// 创建photo实体
+				array('photosynch/create', 'pattern'=>'api/photo/', 'verb'=>'POST'),
 				
-				// audio实体的同步功能
-				array('audiosynch/processsynch', 'pattern'=>'api/synch/<model:audio>', 'verb'=>'POST'),
+				// 创建audio实体
+				array('audiosynch/create', 'pattern'=>'api/audio/', 'verb'=>'POST'),
 				
 				// video实体的同步功能（未实现的预留功能）
 				array('videosynch/processsynch', 'pattern'=>'api/synch/<model:video>', 'verb'=>'POST'),
@@ -92,6 +88,14 @@ return array(
 				
 				// testing rule
 				array('userrest/optimistLocking', 'pattern'=>'api/<model:optimistLocking>/<id:\w+>', 'verb'=>'GET'),
+				
+
+				// 密码重置（功能尚未完成）
+				//array('userrest/resetpassword', 'pattern'=>'api/<model:restpassword>', 'verb'=>'PUT'),
+				
+				// 下载某一用户的所有记录对象和用户信息
+				//array('userrest/fetchsubjects', 'pattern'=>'api/<model:fetchsubjects>', 'verb'=>'GET'),
+				
 				
 				// Yii的默认规则。
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
