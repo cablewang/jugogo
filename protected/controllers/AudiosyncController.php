@@ -2,7 +2,7 @@
 
 require_once(APP_ROOT.'/fastdfs/fastDFS.php');
 
-class AudiosynchController extends Controller
+class AudiosyncController extends Controller
 {
 	
 	/**

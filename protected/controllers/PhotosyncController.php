@@ -2,7 +2,7 @@
 
 require_once(APP_ROOT.'/fastdfs/fastDFS.php');
 
-class PhotosynchController extends Controller
+class PhotosyncController extends Controller
 {
 	
 	/**

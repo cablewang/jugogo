@@ -67,15 +67,21 @@ return array(
 				array('avatarsynch/create', 'pattern'=>'api/avatar/', 'verb'=>'POST'),
 				
 				// 创建note实体
-				array('notesynch/create', 'pattern'=>'api/note/', 'verb'=>'POST'),
+				array('notesync/create', 'pattern'=>'api/note/', 'verb'=>'POST'),
 				// 修改note实体
-				array('notesynch/update', 'pattern'=>'api/note/<id:\w+>', 'verb'=>'POST'),
+				array('notesync/update', 'pattern'=>'api/note/<id:\w+>', 'verb'=>'POST'),
+				// 删除note实体
+				array('notesync/delete', 'pattern'=>'api/note/<id:\w+>/<usn:\w+>', 'verb'=>'DELETE'),
 				
 				// 创建photo实体
-				array('photosynch/create', 'pattern'=>'api/photo/', 'verb'=>'POST'),
+				array('photosync/create', 'pattern'=>'api/photo/', 'verb'=>'POST'),
+				// 删除photo实体
+				array('photosync/delete', 'pattern'=>'api/photo/<id:w+>/<usn:\w+>', 'verb'=>'DELETE'),
 				
 				// 创建audio实体
-				array('audiosynch/create', 'pattern'=>'api/audio/', 'verb'=>'POST'),
+				array('audiosync/create', 'pattern'=>'api/audio/', 'verb'=>'POST'),
+				// 删除audio实体
+				array('audiosync/delete', 'pattern'=>'api/delete/<id:w+>/<usn:\w+>', 'verb'=>'DELETE'),
 				
 				// video实体的同步功能（未实现的预留功能）
 				array('videosynch/processsynch', 'pattern'=>'api/synch/<model:video>', 'verb'=>'POST'),

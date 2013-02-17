@@ -145,10 +145,11 @@ class Accessory
 	 * 向客户端返回错误响应
 	 * @param string $statusCode 状态代码，$message 错误信息.
 	 */ 
-	public static function warningResponse($statusCode, $message)
+	public static function warningResponse($statusCode, $message, $syncStatusCode='')
 	{
 		$response = array(
 				'status_code' => $statusCode,
+				'sync_status_code' => $syncStatusCode,
 				'error_message' => $message,
 		);
 		Accessory::sendRESTResponse(500, CJSON::encode($response));

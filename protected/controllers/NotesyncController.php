@@ -1,5 +1,5 @@
 <?php 
-class NotesynchController extends Controller
+class NotesyncController extends Controller
 {
 	
 	/**
@@ -10,6 +10,8 @@ class NotesynchController extends Controller
 	Const RESPONSE_STATUS_GOOD = '1';
 	Const RESPONSE_STATUS_BAD = '2';
 	Const SYNC_STATUS_TASK_DONE_BEFORE = '300';
+	Const SYNC_STATUS_OBJECT_DELETED = '301';
+	Const SYNC_STATUS_NEED_INCREMENT_SYNC = '302';
 	Const RESPONSE_STATUS_USER_NOT_EXIST = '801';
 	Const RESPONSE_STATUS_DUPLICATED_SUBJECT = '802';
 	Const RESPONSE_STATUS_SUBJECT_NOT_EXIST = '803';
@@ -141,16 +143,7 @@ class NotesynchController extends Controller
 						'System error, please contact Jugaogao customer service.');
 				} else {
 					if ($note->usn == $_POST['Note']['usn']) {
-						// sync task has been processed successfully before
-						// send a good response to the App so that it knows to remove the task
-						$response = array(
-							'id' => $note->id,
-							'usn' => $note->usn,
-							'status_code' => self::RESPONSE_STATUS_GOOD,
-							'sync_status_code' => self::SYNC_STATUS_TASK_DONE_BEFORE,
-							'error_message' => '',
-						);
-						Accessory::sendRESTResponse(201, CJSON::encode($response));
+						$this->_syncTaskDoneBefore($note);
 					}
 				}
 			} else {
@@ -202,17 +195,91 @@ class NotesynchController extends Controller
 			} else {
 				// Errors occurred
 				Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
-				'Note sync failed');
+							'Note sync failed');
 			}
 		}
 	}
-	private function _updateNote()
-	{
 	
+	public function actionDelete() {
+		$note_id = $_GET['id'];
+		$usn = $_GET['usn'];
+		
+		Accessory::writeLog('note id: ' . $note_id . '; usn: ' . $usn);
+		
+		$note = Note::model()->findByPk($note_id);
+		$user_id = $note->user->id;
+		if ($note->deleted == 1) {
+			$this->_syncTaskDoneBefore($note);
+		} elseif ($note->usn == $usn) {
+			if (DBTransactionManager::deleteNoteAndAttachments($note, $user_id)) {
+				$response = array(
+						'id' => $note->id,
+						'usn' => $note->usn,
+						'status_code' => self::RESPONSE_STATUS_GOOD,
+						'sync_status_code' => self::SYNC_STATUS_OBJECT_DELETED,
+						'error_message' => '',
+				);
+				Accessory::sendRESTResponse(201, CJSON::encode($response));
+			} else {
+				// Errors occurred
+				Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
+											'Note sync failed');	
+			}
+		} elseif ($note->usn > $usn) {
+			// 服务器端的数据比客户端的数据更新
+			// 提示客户端进行增量同步
+			Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
+										'Delete target usn is newer than device\'s',
+										self::SYNC_STATUS_NEED_INCREMENT_SYNC);
+		} else {
+			Accessory::writeLog('this should not happen!');
+			// Errors occurred
+			Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
+							'Note sync failed');
+		}
 	}
 	
-	private function _deleteNote()
+	private function _syncTaskDoneBefore($note)
 	{
-	
+		// sync task has been processed successfully before
+		// send a good response to the App so that it knows to remove the task
+		$response = array(
+				'id' => $note->id,
+				'usn' => $note->usn,
+				'status_code' => self::RESPONSE_STATUS_GOOD,
+				'sync_status_code' => self::SYNC_STATUS_TASK_DONE_BEFORE,
+				'error_message' => '',
+		);
+		Accessory::sendRESTResponse(201, CJSON::encode($response));
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

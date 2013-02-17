@@ -175,4 +175,12 @@ class Note extends CActiveRecord
 		else
 			return false;
 	}
+	
+	public function fetchAllAttachments()
+	{
+		$attachments = $this->photos;
+		$attachments = $this->audios;
+		$attachments = $this->videos;
+		return $attachments;
+	}
 }
