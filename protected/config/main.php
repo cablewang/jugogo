@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Jugaogao',
+	'name'=>'My Web Application',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -41,30 +41,36 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
-				'post/<id:\w+>/<title:.*?>'=>'post/view',
-        		'posts/<tag:.*?>'=>'post/index',
-        		
+					
+				'home' => 'site/index',
+					
         		// REST API URL 每一个pattern只代表一个URL（未来由苏熊抽象route中API URL的通用pattern）
-				
+
 				// 申请临时授权令牌
 				array('rest/authkey', 'pattern'=>'api/<model:authkey>/<id:\w+>', 'verb'=>'GET'),
+
+				// 用户注册
+				array('userrest/signup', 'pattern'=>'api/<model:signup>', 'verb'=>'POST'),
+
+				// 用户登录
+				array('userrest/signin', 'pattern'=>'api/<model:signin>', 'verb'=>'PUT'),
 				
 				// 更新同步状态
 				array('rest/syncstatus', 'pattern'=>'api/<model:syncstatus>/<id:\w+>', 'verb'=>'GET'),
+					
+				// 下载同步数据
+				array('rest/syncchunk', 'pattern'=>'api/<model:syncchunk>/<id:\w+>/<usn:\w+>/<max:\w+>', 'verb'=>'GET'),
 				
-				// 用户注册
-				array('userrest/signup', 'pattern'=>'api/<model:signup>', 'verb'=>'POST'),
-				
-				// 用户登录
-				array('userrest/signin', 'pattern'=>'api/<model:signin>', 'verb'=>'PUT'),
+				// 下载某个笔记的附件数据
+				array('rest/attachmentdata', 'pattern'=>'api/<model:attachmentdata>/<id:\w+>', 'verb'=>'GET'),
 				
 				// 以下是各个实体的同步功能，同步功能包括上传创建，下载读取，上传修改，和客户端删除
 				
 				// 创建subject实体
-				array('subjectsynch/create', 'pattern'=>'api/subject/', 'verb'=>'POST'),
+				array('subjectsync/create', 'pattern'=>'api/subject/', 'verb'=>'POST'),
 				
 				// 创建avatar实体
-				array('avatarsynch/create', 'pattern'=>'api/avatar/', 'verb'=>'POST'),
+				array('avatarsync/create', 'pattern'=>'api/avatar/', 'verb'=>'POST'),
 				
 				// 创建note实体
 				array('notesync/create', 'pattern'=>'api/note/', 'verb'=>'POST'),
@@ -93,9 +99,9 @@ return array(
 				array('locationsynch/processsynch', 'pattern'=>'api/synch/<model:location>', 'verb'=>'POST'),
 				
 				// testing rule
-				array('userrest/optimistLocking', 'pattern'=>'api/<model:optimistLocking>/<id:\w+>', 'verb'=>'GET'),
+				//array('userrest/optimistLocking', 'pattern'=>'api/<model:optimistLocking>/<id:\w+>', 'verb'=>'GET'),
 				
-
+				
 				// 密码重置（功能尚未完成）
 				//array('userrest/resetpassword', 'pattern'=>'api/<model:restpassword>', 'verb'=>'PUT'),
 				
@@ -103,19 +109,20 @@ return array(
 				//array('userrest/fetchsubjects', 'pattern'=>'api/<model:fetchsubjects>', 'verb'=>'GET'),
 				
 				
+				
 				// Yii的默认规则。
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
-			//'showScriptName'=>false,
+			'showScriptName'=>false,
 		),
 		
 		'db'=>array(
 			'connectionString' => 'mysql:host=127.0.0.1;dbname=vjugogo',
 			'emulatePrepare' => true,
 			'username' => 'vjugogo',
-			'password' => 'vjgg!@#qwe',
+			'password' => 'WE*1ygjkx*X5cz',
 			'charset' => 'utf8',
 		),
 		

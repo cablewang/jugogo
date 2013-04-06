@@ -1,5 +1,5 @@
 <?php 
-class SubjectsynchController extends Controller
+class SubjectsyncController extends Controller
 {
 	
 	/**
@@ -80,8 +80,6 @@ class SubjectsynchController extends Controller
 							break;
 							
 						case 'usn':
-							// 以下操作前应该锁死当前账号的update_count字段
-							$subject->$key = $user->update_count + 1;
 							break;
 							
 						case 'uuid':
@@ -112,30 +110,20 @@ class SubjectsynchController extends Controller
 			
 			$createSuccess = true;
 			
-			if($subject->save()) {	
-				// subject 实体被成功存储到数据库中
-				// 更新用户账户的update_count
-				$subject = $this->_updateUserUSN($subject, $user);
-				
-				if (!is_null($subject)) {
-					// 关联新创建的subject和用户
-					$subject->associateUserToSubject($user, $user_role);
+			$subject = DBTransactionManager::saveObjectWithUSN($subject, $user_id);
+			if($subject !== null) {
+				// 关联新创建的subject和用户
+				$subject->associateUserToSubject($user, $user_role);
 					
-					$response = array(
+				$response = array(
 							'id' => $subject->id,
 							'usn' => $subject->usn,
 							'status_code' => self::RESPONSE_STATUS_GOOD,
 							'error_message' => '',
-					);
-					Accessory::sendRESTResponse(201, CJSON::encode($response));
-				} else {
-					$createSuccess = false;
-				}
+				);
+				Accessory::sendRESTResponse(201, CJSON::encode($response));
+				
 			} else {
-				$createSuccess = false;
-			}
-
-			if (!$createSuccess){
 				Accessory::writeLog('subject save failed');
 				// Errors occurred
 				Accessory::warningResponse(self::RESPONSE_STATUS_BAD, 

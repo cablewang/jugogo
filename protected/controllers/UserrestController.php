@@ -19,6 +19,26 @@ class UserrestController extends Controller
 	Const RESPONSE_STATUS_NO_ACCESS_RIGHT = '401';
 
 	/**
+	 * for HTTP post method testing
+	public function actionTesting() 
+	{
+		Accessory::writeLog('testing function is reached');
+		$response = array(
+					'message' => 'good',
+				);
+		Accessory::sendRESTResponse(201, CJSON::encode($response));
+	}
+	
+	public function actionTestingpost() {
+		Accessory::writeLog('post testing function is readched');
+		$response = array(
+						'message' => 'post good',
+				);
+		Accessory::sendRESTResponse(201, CJSON::encode($response));
+	}
+	*/
+	
+	/**
 	 * 用户注册
 	 * 过程中将检测客户端发来的临时信任状
 	 * 
@@ -139,7 +159,7 @@ class UserrestController extends Controller
 	 */
 	public function actionOptimistLocking()
 	{
-		Accessory::writeLog($_GET['id']);
+		Accessory::writeLog(get_class($this) . '-> ' . $_GET['id']);
 		$user1 = User::model()->findByPk($_GET['id']);
 		$user2 = User::model()->findByPk($_GET['id']);
 		$user3 = User::model()->findByPk($_GET['id']);
@@ -153,7 +173,7 @@ class UserrestController extends Controller
 		try {
 			$user1->updateByPk($_GET['id'], $attributes);
 		} catch (StaleObjectError $e) {
-			Accessory::writeLog($e->getMessage());
+			Accessory::writeLog(get_class($this) . '-> ' . $e->getMessage());
 		}
 		
 		sleep($seconds);
@@ -163,7 +183,7 @@ class UserrestController extends Controller
 		try {
 			$user2->updateByPk($_GET['id'], $attributes);
 		} catch (StaleObjectError $e) {
-			Accessory::writeLog($e->getMessage());
+			Accessory::writeLog(get_class($this) . '-> ' . $e->getMessage());
 		}
 
 		sleep($seconds);
@@ -183,13 +203,14 @@ class UserrestController extends Controller
 		try {
 			$user4->updateByPk($_GET['id'], $attributes);
 		} catch (StaleObjectError $e) {
-			Accessory::writeLog($e->getMessage());
+			Accessory::writeLog(get_class($this) . '-> ' . $e->getMessage());
 		}
 	}
 	
 	/**
 	 * receives request from client and sends back an authentication key
 	 */
+	/*
 	public function actionResetpassword()
 	{
 		$log = new Logging();
@@ -216,11 +237,10 @@ class UserrestController extends Controller
 			Accessory::warningResponse(self::RESPONSE_STATUS_BAD, '');
 		}
 	}
+	*/
 	
 	public function actionSignin()
 	{
-		$log = new Logging();
-		$log->lfile(self::JGG_LOG_FILE_PATH);
 		
 		// fetch and decode the PUT parameters
 		$json = file_get_contents('php://input');
@@ -233,10 +253,8 @@ class UserrestController extends Controller
 					'status_code' => self::RESPONSE_STATUS_BAD_SIGNIN,
 					'error_message' => 'Incorrect username or password',
 			);
-			$log->lwrite("not ok");
-			Accessory::sendResponse(500, CJSON::encode($response));
-			//return;
-			//$this->addError('password','Incorrect username or password.');
+			Accessory::writeLog(get_class($this) . '-> Incorrect username or password');
+			Accessory::sendRESTResponse(500, CJSON::encode($response));
 		} else {
 			$user = User::model()->findByAttributes(array('email'=>$put_vars['email']));
 			$response = array(
@@ -247,9 +265,8 @@ class UserrestController extends Controller
 					'status_code' => self::RESPONSE_STATUS_GOOD,
 					'error_message' => '',
 			);
-			$log->lwrite("ok");
-			Accessory::sendResponse(201, CJSON::encode($response));
-			//return;
+			Accessory::writeLog(get_class($this) . '-> sign in successful');
+			Accessory::sendRESTResponse(201, CJSON::encode($response));
 		}
 	}
 	

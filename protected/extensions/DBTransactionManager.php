@@ -22,6 +22,28 @@ class DBTransactionManager
 		
 	}
 	
+	public static function saveAvatarWithUSN($avatar, $user_id)
+	{
+		$transaction = Yii::app()->db->beginTransaction();
+		try {
+			$user = User::model()->findByPk($user_id);
+			$avatar->avatar_usn = $user->update_count + 1;
+			$avatar->save();
+			$user->increaseUSN();
+			$transaction->commit();
+			return $avatar;
+		}
+		catch (StaleObjectError $staleObjectError) {
+			Accessory::writeLog('update usn failed');
+			$this->saveAvatarWithUSN($avatar, $user_id);
+		}
+		catch (Exception $e) {
+			Accessory::writeLog('save error!' . $e->getMessage());
+			return null;
+		}
+	
+	}
+	
 	public static function deleteNoteAndAttachments($note, $user_id)
 	{
 		$transaction = Yii::app()->db->beginTransaction();

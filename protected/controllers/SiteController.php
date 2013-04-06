@@ -2,6 +2,12 @@
 
 class SiteController extends Controller
 {
+	
+	Const RESPONSE_STATUS_GOOD = '1';
+	Const RESPONSE_STATUS_BAD = '2';
+	Const LOGIN_SUCCESSFUL = '201';
+	Const LOGIN_FAILED = '202';
+	
 	/**
 	 * Declares class-based actions.
 	 */
@@ -80,6 +86,30 @@ class SiteController extends Controller
 			Yii::app()->end();
 		}
 
+		// if it is sent from mobile device
+		// added by Kable 2013-02-19
+		if (isset($_POST['mobile_device']) && $_POST['mobile_device']==='login')
+		{
+			if (isset($_POST['LoginForm'])) {
+				$model->attributes = $_POST['LoginForm'];
+				// validate user input and redirect to the previous page if valid
+				if ($model->validate() && $model->login()) {
+					// sync task has been processed successfully before
+					// send a good response to the App so that it knows to remove the task
+					$response = array(
+							'status_code' => self::RESPONSE_STATUS_GOOD,
+							'login_status_code' => self::LOGIN_SUCCESSFUL,
+							'error_message' => '',
+					);
+					Accessory::sendRESTResponse(201, CJSON::encode($response));
+				} else {
+					Accessory::warningResponse(self::LOGIN_FAILED,
+							'Login failed.');
+				}
+			}
+			Yii::app()->end();
+		}
+		
 		// collect user input data
 		if(isset($_POST['LoginForm']))
 		{

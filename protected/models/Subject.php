@@ -171,16 +171,13 @@ class Subject extends CActiveRecord
 	}
 	
 	// return all subjects related to particular user
-	public static function fetchAllSubjects($user_id)
+	public static function fetchAllOwnSubjects($user_id)
 	{
-		$sql = "SELECT us.subject_id id, role, uuid, display_name,
-						birthday, gender, introduction, type,
-						create_time, last_update_time, privacy, uurn
-				FROM jgg_user_subject us, jgg_subject s
-				WHERE us.user_id =:userId AND us.subject_id = s.id";
-		$command = Yii::app()->db->createCommand($sql);
-		$command->bindValue(":userId", $user->id, PDO::PARAM_INT);
-		return $command->execute();
+		$criteria = new CDbCriteria;
+		$criteria->with = array('users');
+		$criteria->condition = "user_id =:userID AND (role = 1 OR role = 0)";
+		$criteria->params = array(':userID' => $user_id);
+		return Subject::model()->findAll($criteria);
 	}
 	
 	/**

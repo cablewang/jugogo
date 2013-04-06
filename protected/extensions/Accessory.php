@@ -90,7 +90,7 @@ class Accessory
 	public static function packUUID($uuid)
 	{
 		if ($uuid !== null) {
-			$dbValue = pack('H*', $uuid);
+			$dbValue = pack('H*', strtoupper($uuid));
 			return $dbValue;
 		}
 	}
@@ -104,7 +104,7 @@ class Accessory
 	{
 		if ($dbValue !== null) {
 			$uuid = implode('', unpack('H*', $dbValue));
-			return $uuid;
+			return strtoupper($uuid);
 		}
 	}
 	

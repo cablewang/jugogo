@@ -18,7 +18,7 @@
  * @property string $desc
  * @property double $width
  * @property double $height
- * @property integer $orietation
+ * @property integer $orientation
  *
  * The followings are the available model relations:
  * @property Note $note
@@ -52,7 +52,7 @@ class Photo extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('note_id, uuid, display_file_name, create_time', 'required'),
-			array('orietation', 'numerical', 'integerOnly'=>true),
+			array('orientation', 'numerical', 'integerOnly'=>true),
 			array('width, height', 'numerical'),
 			array('note_id', 'length', 'max'=>20),
 			array('uuid', 'length', 'max'=>16),
@@ -61,7 +61,7 @@ class Photo extends CActiveRecord
 			array('desc', 'length', 'max'=>256),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, note_id, uuid, dfs_group_name, original_file_name, dfs_original_file_name, display_file_name, dfs_display_file_name, thumb_name, dfs_thumb_name, create_time, desc, width, height, orietation', 'safe', 'on'=>'search'),
+			array('id, note_id, uuid, dfs_group_name, original_file_name, dfs_original_file_name, display_file_name, dfs_display_file_name, thumb_name, dfs_thumb_name, create_time, desc, width, height, orientation', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -97,7 +97,7 @@ class Photo extends CActiveRecord
 			'desc' => 'Desc',
 			'width' => 'Width',
 			'height' => 'Height',
-			'orietation' => 'Orietation',
+			'orientation' => 'Orientation',
 		);
 	}
 
@@ -126,7 +126,7 @@ class Photo extends CActiveRecord
 		$criteria->compare('desc',$this->desc,true);
 		$criteria->compare('width',$this->width);
 		$criteria->compare('height',$this->height);
-		$criteria->compare('orietation',$this->orietation);
+		$criteria->compare('orientation',$this->orientation);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

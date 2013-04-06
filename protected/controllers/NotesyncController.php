@@ -226,11 +226,22 @@ class NotesyncController extends Controller
 											'Note sync failed');	
 			}
 		} elseif ($note->usn > $usn) {
-			// 服务器端的数据比客户端的数据更新
-			// 提示客户端进行增量同步
-			Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
+			if ($note->deleted == 1) {
+				$response = array(
+						'id' => $note->id,
+						'usn' => $note->usn,
+						'status_code' => self::RESPONSE_STATUS_GOOD,
+						'sync_status_code' => self::SYNC_STATUS_OBJECT_DELETED,
+						'error_message' => '',
+				);
+				Accessory::sendRESTResponse(201, CJSON::encode($response));
+			} else {
+				// 服务器端的数据比客户端的数据更新
+				// 提示客户端进行增量同步
+				Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
 										'Delete target usn is newer than device\'s',
-										self::SYNC_STATUS_NEED_INCREMENT_SYNC);
+										self::SYNC_STATUS_NEED_INCREMENT_SYNC);	
+			}	
 		} else {
 			Accessory::writeLog('this should not happen!');
 			// Errors occurred

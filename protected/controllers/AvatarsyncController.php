@@ -2,7 +2,7 @@
 
 require_once(APP_ROOT.'/fastdfs/fastDFS.php');
 
-class AvatarsynchController extends Controller
+class AvatarsyncController extends Controller
 {
 	
 	/**
@@ -110,7 +110,7 @@ class AvatarsynchController extends Controller
 
 			if (!$objectExist) { 
 				// 加载User实体，稍后获取USN时使用
-				$user = User::model()->findByPk($user_id);
+				//$user = User::model()->findByPk($user_id);
 				foreach ($_POST['Avatar'] as $key => $value) {
 					Accessory::writeLog($key . ' ' . $value);
 					if ($avatar->hasAttribute($key)) {
@@ -122,11 +122,6 @@ class AvatarsynchController extends Controller
 							case 'uuid':
 								$avatar->$key = Accessory::packUUID($value);
 								break;
-	
-							case 'usn':
-									// 以下操作前应该锁死当前账号的update_count字段
-									$avatar->$key = $user->update_count + 1;
-									break;
 									
 							default:
 								$avatar->$key = $value;
@@ -135,7 +130,8 @@ class AvatarsynchController extends Controller
 					} else {
 						switch ($key) {
 							case 'user_id':
-							//case 'server_id':
+							case 'server_id':
+							case 'usn':
 								break;
 					
 							default:
@@ -150,34 +146,21 @@ class AvatarsynchController extends Controller
 								' name: '. $avatar->avatar_name . 
 								' thumb name: ' . $avatar->avatar_thumb_name .
 								' create time: ' . $avatar->create_time );
-			}
-			//print_r($avatar);	
+			}	
 			
-			$createSuccess = true;
+			//$createSuccess = true;
 			
-			if($avatar->save()) {
-
-				// avatar 实体已经被成功存储到数据库中
-				if (!$objectExist) {
-					// 更新用户账户的update_count
-					$avatar = User::updateUserUSN($avatar, $user);
-				}
-				
-				if (!is_null($avatar)) {
-					$response = array(
+			$avatar = DBTransactionManager::saveAvatarWithUSN($avatar, $user_id);
+			
+			if ($avatar !== null) {
+				$response = array(
 						'id' => $avatar->id,
-						'usn' => $avatar->usn,
+						'usn' => $avatar->avatar_usn,
 						'status_code' => self::RESPONSE_STATUS_GOOD,
 						'error_message' => '',
-					);
-					Accessory::sendRESTResponse(201, CJSON::encode($response));
-				} else {
-					$createSuccess = false;
-				}
+				);
+				Accessory::sendRESTResponse(201, CJSON::encode($response));
 			} else {
-				$createSuccess = false;
-			}
-			if (!$createSuccess) {
 				Accessory::writeLog('avatar save failed');
 				// Errors occurred
 				Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
