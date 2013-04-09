@@ -1,4 +1,7 @@
 <?php 
+
+require_once(APP_ROOT.'/protected/extensions/SyncAccessory.php');
+
 class SubjectsyncController extends Controller
 {
 	
@@ -10,6 +13,7 @@ class SubjectsyncController extends Controller
 	Const RESPONSE_STATUS_GOOD = '1';
 	Const RESPONSE_STATUS_BAD = '2';
 	Const SYNC_STATUS_TASK_DONE_BEFORE = '300';
+	Const SYNC_STATUS_OBJECT_DELETED = '301';
 	Const RESPONSE_STATUS_USER_NOT_EXIST = '801';
 	Const RESPONSE_STATUS_DUPLICATED_SUBJECT = '802';
 	Const RESPONSE_STATUS_SUBJECT_NOT_EXIST = '803';
@@ -43,7 +47,7 @@ class SubjectsyncController extends Controller
 			$subject = Subject::fetchSubject($user_id, $subject_uuid);
 			if ($subject !== NULL) {
 				
-				Accessory::writeLog('subject found. uuid: ' . $subject->uuid . ' name: '. $subject->display_name .' subject: ' . $subject);
+				Accessory::writeLog('subject found. uuid: ' . $subject->uuid . ' name: '. $subject->display_name);
 				
 				if (strtotime($subject->create_time) !== strtotime($_POST['Subject']['create_time'])) {
 					Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_DUPLICATED_SUBJECT, 
@@ -77,12 +81,11 @@ class SubjectsyncController extends Controller
 					switch ($key) {
 						// 忽略以下参数
 						case 'last_update_time':
-							break;
-							
 						case 'usn':
 							break;
 							
 						case 'uuid':
+						case 'current_avatar_uuid':
 							$subject->$key = Accessory::packUUID($value);
 							break;
 							
@@ -108,7 +111,7 @@ class SubjectsyncController extends Controller
 			
 			Accessory::writeLog('finished all attributes assignment');
 			
-			$createSuccess = true;
+			//$createSuccess = true;
 			
 			$subject = DBTransactionManager::saveObjectWithUSN($subject, $user_id);
 			if($subject !== null) {
@@ -162,16 +165,18 @@ class SubjectsyncController extends Controller
 		}
 	}
 	
-	private function _updateSubject()
+	public function actionUpdate()
 	{
-		Accessory::writeLog('update subject');
+		Accessory::writeLog('about to update subject');
 		
 		if(isset($_POST['Subject']))
 		{
 			$user_id = $_POST['Subject']['user_id'];
 			$subject_uuid = Accessory::packUUID($_POST['Subject']['uuid']);
-			//$log->lwrite('user id: ' . $user_id . ', ' . 'uuid: ' . $subject_uuid);
-			if (!User::isUserExist($user_id)) {
+			
+			$user = User::model()->findByPk($user_id);
+			
+			if ($user === null) {
 		
 				Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_USER_NOT_EXIST, 
 												'user not exist', 
@@ -182,9 +187,10 @@ class SubjectsyncController extends Controller
 				Accessory::warningResponse(self::RESPONSE_STATUS_USER_NOT_EXIST, 
 										'User not exist, please contact Jugaogao customer service.');
 			}
-			$user = User::model()->findByPk($user_id);	
+
+			$subject = Subject::fetchSubject($user_id, $subject_uuid);
 			
-			if (!(Subject::isSubjectExist($user_id, $subject_uuid))) {
+			if ($subject === null) {
 		
 				Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_SUBJECT_NOT_EXIST, 
 												'update subject not exist', 
@@ -195,8 +201,6 @@ class SubjectsyncController extends Controller
 										'System error, please contact Jugaogao customer service.');
 			}
 			
-			$subject = Subject::fetchSubject($user_id, $subject_uuid);
-			
 			//$model->attributes=$_POST['Subject'];
 			foreach ($_POST['Subject'] as $key => $value) {
 				Accessory::writeLog($key . ' ' . $value);
@@ -204,11 +208,11 @@ class SubjectsyncController extends Controller
 					switch ($key) {
 						case 'uuid':
 						case 'create_time':
-							break;
-							
 						case 'usn':
-							// 以下操作前应该锁死当前账号的update_count字段
-							$subject->$key = $user->update_count + 1;
+							break;
+
+						case 'current_avatar_uuid':
+							$subject->$key = Accessory::packUUID($value);
 							break;
 							
 						default:
@@ -228,12 +232,9 @@ class SubjectsyncController extends Controller
 				}
 			}
 			
-			if($subject->save()) {
-				// subject 实体被成功存储到数据库中
-				$user->update_count = $subject->usn;
-				$user->save();
-				// 应该在这里对当前账户的update_count字段解锁
-				
+			$subject = DBTransactionManager::saveObjectWithUSN($subject, $user_id);
+			
+			if($subject !== null) {
 				$response = array(
 						'id' => $subject->id,
 						'usn' => $subject->usn,
@@ -250,10 +251,53 @@ class SubjectsyncController extends Controller
 			}
 		}
 	}
-	
-	public function downloadall()
+
+	public function actionDelete()
 	{
+		Accessory::writeLog('about to delete subject');
+	
+		$subject_id = $_GET['id'];
+		$subject_usn = $_GET['usn'];
+		$subject = Subject::model()->findByPk($subject_id);	
+		if ($subject === null) {
+			Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_SUBJECT_NOT_EXIST,
+				'delete subject not exist',
+				array('subject/id'=>$_GET['id']),
+				__CLASS__ .' '. __FUNCTION__);
 		
+			Accessory::warningResponse(self::RESPONSE_STATUS_SUBJECT_NOT_EXIST,
+				'System error, please contact Jugaogao customer service.');
+		}
+		if ($subject->deleted == 1) {
+			SyncAccessory::deleteSyncTaskDoneBeforeFor($subject);
+		} elseif ($subject->usn == $subject_usn) {
+			$user = User::fetchOwnerForSubject($subject->id);
+			if (DBTransactionManager::deleteObject($subject, $user->id)) {
+				$response = array(
+						'id' => $subject->id,
+						'usn' => $subject->usn,
+						'status_code' => self::RESPONSE_STATUS_GOOD,
+						'sync_status_code' => self::SYNC_STATUS_OBJECT_DELETED,
+						'error_message' => '',
+				);
+				Accessory::sendRESTResponse(201, CJSON::encode($response));
+			} else {
+				// Errors occurred
+				Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
+						'Subject sync failed');
+			}
+		} elseif ($subject->usn > $subject_usn) {
+			// 服务器端的数据比客户端的数据更新
+			// 提示客户端进行增量同步
+			Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
+							'Delete target usn is newer than device\'s',
+							self::SYNC_STATUS_NEED_INCREMENT_SYNC);
+		} else {
+			Accessory::writeLog('this should not happen!');
+			// Errors occurred
+			Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
+						'Subject sync failed');
+		}
 	}
 	
 }

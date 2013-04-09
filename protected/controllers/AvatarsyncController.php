@@ -1,6 +1,7 @@
 <?php 
 
 require_once(APP_ROOT.'/fastdfs/fastDFS.php');
+require_once(APP_ROOT.'/protected/extensions/SyncAccessory.php');
 
 class AvatarsyncController extends Controller
 {
@@ -13,6 +14,7 @@ class AvatarsyncController extends Controller
 	Const RESPONSE_STATUS_GOOD = '1';
 	Const RESPONSE_STATUS_BAD = '2';
 	Const SYNC_STATUS_TASK_DONE_BEFORE = '300';
+	Const SYNC_STATUS_OBJECT_DELETED = '301';
 	Const RESPONSE_STATUS_USER_NOT_EXIST = '801';
 	Const RESPONSE_STATUS_SUBJECT_NOT_EXIST = '803';
 	Const RESPONSE_STATUS_DUPLICATED_AVATAR = '816';
@@ -169,14 +171,52 @@ class AvatarsyncController extends Controller
 		}
 	}
 	
-	private function _updateAvatar()
+	public function actionDelete()
 	{
+		Accessory::writeLog('about to delete avatar');
 		
-	}
-	
-	private function _deleteAvatar()
-	{
+		$avatar_id = $_GET['id'];
+		$avatar_usn = $_GET['usn'];
+		$avatar = Avatar::model()->findByPk($avatar_id);
+		if ($avatar === null) {
+			Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_AVATAR_NOT_EXIST,
+			'delete avatar not exist',
+			array('avatar/id'=>$_GET['id']),
+			__CLASS__ .' '. __FUNCTION__);
 		
+			Accessory::warningResponse(self::RESPONSE_STATUS_AVATAR_NOT_EXIST,
+			'System error, please contact Jugaogao customer service.');
+		}
+		if ($avatar->deleted == 1) {
+			SyncAccessory::deleteSyncTaskDoneBeforeForAvatar($avatar);
+		} elseif ($avatar->avatar_usn == $avatar_usn) {
+			$user = User::fetchOwnerForAvatar($avatar);
+			if (DBTransactionManager::deleteAvatar($avatar, $user->id)) {
+				$response = array(
+						'id' => $avatar->id,
+						'usn' => $avatar->avatar_usn,
+						'status_code' => self::RESPONSE_STATUS_GOOD,
+						'sync_status_code' => self::SYNC_STATUS_OBJECT_DELETED,
+						'error_message' => '',
+				);
+				Accessory::sendRESTResponse(201, CJSON::encode($response));
+			} else {
+				// Errors occurred
+				Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
+				'Subject sync failed');
+			}
+		} elseif ($avatar->avatar_usn > $avatar_usn) {
+			// 服务器端的数据比客户端的数据更新
+			// 提示客户端进行增量同步
+			Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
+			'Delete target usn is newer than device\'s',
+			self::SYNC_STATUS_NEED_INCREMENT_SYNC);
+		} else {
+			Accessory::writeLog('this should not happen!');
+			// Errors occurred
+			Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
+			'Subject sync failed');
+		}
 	}
 	
 }

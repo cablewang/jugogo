@@ -68,9 +68,15 @@ return array(
 				
 				// 创建subject实体
 				array('subjectsync/create', 'pattern'=>'api/subject/', 'verb'=>'POST'),
+				// 修改Subject实体
+				array('subjectsync/update', 'pattern'=>'api/subject/<id:\w+>', 'verb'=>'POST'),
+				// 删除Subject实体
+				array('subjectsync/delete', 'pattern'=>'api/subject/<id:\w+>/<usn:\w+>', 'verb'=>'DELETE'),
 				
 				// 创建avatar实体
 				array('avatarsync/create', 'pattern'=>'api/avatar/', 'verb'=>'POST'),
+				// 删除avatar实体
+				array('avatarsync/delete', 'pattern'=>'api/avatar/<id:\w+>/<usn:\w+>', 'verb'=>'DELETE'),
 				
 				// 创建note实体
 				array('notesync/create', 'pattern'=>'api/note/', 'verb'=>'POST'),

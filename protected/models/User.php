@@ -212,4 +212,22 @@ class User extends OptimistLockingActiveRecord
 			throw $e;
 		}
 	}
+	
+	public static function fetchOwnerForSubject($subject_id)
+	{
+		$criteria = new CDbCriteria;
+		$criteria->with = array('subjects');
+		$criteria->condition = "(role=1 OR role=0) AND subject_id<=:subjectID";
+		$criteria->params = array(':subjectID' => $subject_id);
+		$user = User::model()->find($criteria);
+		return $user;
+	}
+	
+	public static function fetchOwnerForAvatar($avatar)
+	{
+		Accessory::writeLog($avatar->subject_id);
+		$user = User::fetchOwnerForSubject($avatar->subject_id);
+		Accessory::writeLog($user->id);
+		return $user;
+	}
 }

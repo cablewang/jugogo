@@ -14,12 +14,11 @@ class DBTransactionManager
 		} 
 		catch (StaleObjectError $staleObjectError) {
 			Accessory::writeLog('update usn failed');
-			$this->saveObjectWithUSN($object, $user_id);
+			return $this->saveObjectWithUSN($object, $user_id);
 		}
 		catch (Exception $e) {
 			return null;
-		}
-		
+		}	
 	}
 	
 	public static function saveAvatarWithUSN($avatar, $user_id)
@@ -35,13 +34,12 @@ class DBTransactionManager
 		}
 		catch (StaleObjectError $staleObjectError) {
 			Accessory::writeLog('update usn failed');
-			$this->saveAvatarWithUSN($avatar, $user_id);
+			return $this->saveAvatarWithUSN($avatar, $user_id);
 		}
 		catch (Exception $e) {
 			Accessory::writeLog('save error!' . $e->getMessage());
 			return null;
 		}
-	
 	}
 	
 	public static function deleteNoteAndAttachments($note, $user_id)
@@ -64,9 +62,57 @@ class DBTransactionManager
 		catch (StaleObjectError $staleObjectError) {
 			Accessory::writeLog('update usn failed');
 			sleep(0.3);
-			$this->deleteNoteAndAttachments($note, $user_id);
+			return $this->deleteNoteAndAttachments($note, $user_id);
 		}
 		catch (Exception $e) {
+			Accessory::writeLog('save error!' . $e->getMessage());
+			return false;
+		}
+	}
+
+	public static function deleteObject($object, $user_id)
+	{
+		$transaction = Yii::app()->db->beginTransaction();
+		try {
+			$object->deleted = 1;
+			$user = User::model()->findByPk($user_id);
+			$object->usn = $user->update_count + 1;
+			$user->increaseUSN();
+			$object->save();
+			$transaction->commit();
+			return true;
+		}
+		catch (StaleObjectError $staleObjectError) {
+			Accessory::writeLog('update usn failed');
+			sleep(0.3);
+			return DBTransactionManager::deleteObject($object, $user_id);
+		}
+		catch (Exception $e) {
+			Accessory::writeLog('save error!' . $e->getMessage());
+			return false;
+		}
+	}
+	
+
+	public static function deleteAvatar($avatar, $user_id)
+	{
+		$transaction = Yii::app()->db->beginTransaction();
+		try {
+			$avatar->deleted = 1;
+			$user = User::model()->findByPk($user_id);
+			$avatar->avatar_usn = $user->update_count + 1;
+			$user->increaseUSN();
+			$avatar->save();
+			$transaction->commit();
+			return true;
+		}
+		catch (StaleObjectError $staleObjectError) {
+			Accessory::writeLog('update usn failed');
+			sleep(0.3);
+			return DBTransactionManager::deleteAvatar($avatar, $user_id);
+		}
+		catch (Exception $e) {
+			Accessory::writeLog('save error!' . $e->getMessage());
 			return false;
 		}
 	}

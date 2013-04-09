@@ -135,15 +135,23 @@ class RestController extends Controller
 	private function fetchAvatars($user_id, $start_usn, $end_usn)
 	{
 		$subjects = Subject::fetchAllOwnSubjects($user_id);
-		$subject_ids = array();
+		$subject_params = array();
+		$subject_id_condition = "(";
+		$counter = 1;
 		foreach ($subjects as $subject) {
-			array_push($subject_ids, $subject->id);
-			Accessory::writeLog('subject id: ' . $subjects[0]->id);
+			Accessory::writeLog('subject id: ' . $subject->id);
+			if ($counter > 1) {
+				$subject_id_condition .= " OR ";
+			}
+			$subject_id_condition .= "subject_id=:subjectID" . $counter;
+			$subject_params[':subjectID' . $counter] = $subject->id;
+			$counter++;
 		}
+		$subject_id_condition .= ")";
 		$criteria = new CDbCriteria;
 		$criteria->with = array('subject');
-		$criteria->condition = "subject_id=:subjectID AND avatar_usn>=:startUSN AND avatar_usn<=:endUSN";
-		$criteria->params = array(':subjectID' => $subjects[0]->id, ':startUSN' => $start_usn, ':endUSN' => $end_usn);
+		$criteria->condition = $subject_id_condition . " AND avatar_usn>=:startUSN AND avatar_usn<=:endUSN";
+		$criteria->params = array_merge($subject_params, array(':startUSN' => $start_usn, ':endUSN' => $end_usn));
 		$avatars = Avatar::model()->findAll($criteria);
 		
 		$avatarsDataArray = array();
@@ -161,7 +169,7 @@ class RestController extends Controller
 	{
 		$criteria = new CDbCriteria;
 		$criteria->with = array('users');
-		$criteria->condition = "user_id=:userID AND role=1 AND usn>=:startUSN AND usn<=:endUSN";
+		$criteria->condition = "user_id=:userID AND (role=1 OR role=0) AND usn>=:startUSN AND usn<=:endUSN";
 		$criteria->params = array(':userID' => $user_id, ':startUSN' => $start_usn, ':endUSN' => $end_usn);
 		$subjects = Subject::model()->findAll($criteria);
 		
@@ -171,6 +179,9 @@ class RestController extends Controller
 		foreach ($subjects as $subject) {
 			$subjectData = $subject->getAttributes();
 			$subjectData['uuid'] = Accessory::unpackUUID($subject->uuid);
+			if ($subject->current_avatar_uuid !== null) {
+				$subjectData['current_avatar_uuid'] = Accessory::unpackUUID($subject->current_avatar_uuid);
+			}
 			array_push($subjectsDataArray, $subjectData);
 		}
 		return $subjectsDataArray;
@@ -195,6 +206,14 @@ class RestController extends Controller
 		$note_id = $_GET['id'];
 		Accessory::writeLog(get_class($this) . '-> download attachment data for note #: ' . $note_id);
 		$note = Note::model()->findByPk($note_id);
+		if ($note->attachment_number != (count($note->photos) + count($note->audios))) {
+			// 笔记附件的真实数量和记录的不符，说明其它设备上传附件的工作还没有完成。
+			$response = array(
+						'status_code' => self::RESPONSE_STATUS_BAD,
+						'reason' => 'attachment_number inconsistent',
+					);
+			Accessory::sendRESTResponse(201, CJSON::encode($response));
+		}
 		$photoDataArray = array();
 		if (count($note->photos) > 0) {
 			foreach ($note->photos as $photo) {

@@ -1,4 +1,6 @@
 <?php 
+require_once(APP_ROOT.'/protected/extensions/SyncAccessory.php');
+
 class NotesyncController extends Controller
 {
 	
@@ -207,9 +209,18 @@ class NotesyncController extends Controller
 		Accessory::writeLog('note id: ' . $note_id . '; usn: ' . $usn);
 		
 		$note = Note::model()->findByPk($note_id);
+		if ($note === null) {
+			Accessory::sendErrorMessageToAdmin(self::RESPONSE_STATUS_NOTE_NOT_EXIST,
+			'delete note not exist',
+			array('note/id'=>$_GET['id']),
+			__CLASS__ .' '. __FUNCTION__);
+			
+			Accessory::warningResponse(self::RESPONSE_STATUS_NOTE_NOT_EXIST,
+			'System error, please contact Jugaogao customer service.');
+		}
 		$user_id = $note->user->id;
 		if ($note->deleted == 1) {
-			$this->_syncTaskDoneBefore($note);
+			SyncAccessory::deleteSyncTaskDoneBeforeFor($note);
 		} elseif ($note->usn == $usn) {
 			if (DBTransactionManager::deleteNoteAndAttachments($note, $user_id)) {
 				$response = array(
@@ -226,22 +237,11 @@ class NotesyncController extends Controller
 											'Note sync failed');	
 			}
 		} elseif ($note->usn > $usn) {
-			if ($note->deleted == 1) {
-				$response = array(
-						'id' => $note->id,
-						'usn' => $note->usn,
-						'status_code' => self::RESPONSE_STATUS_GOOD,
-						'sync_status_code' => self::SYNC_STATUS_OBJECT_DELETED,
-						'error_message' => '',
-				);
-				Accessory::sendRESTResponse(201, CJSON::encode($response));
-			} else {
-				// 服务器端的数据比客户端的数据更新
-				// 提示客户端进行增量同步
-				Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
+			// 服务器端的数据比客户端的数据更新
+			// 提示客户端进行增量同步
+			Accessory::warningResponse(self::RESPONSE_STATUS_BAD,
 										'Delete target usn is newer than device\'s',
-										self::SYNC_STATUS_NEED_INCREMENT_SYNC);	
-			}	
+										self::SYNC_STATUS_NEED_INCREMENT_SYNC);		
 		} else {
 			Accessory::writeLog('this should not happen!');
 			// Errors occurred
@@ -249,48 +249,5 @@ class NotesyncController extends Controller
 							'Note sync failed');
 		}
 	}
-	
-	private function _syncTaskDoneBefore($note)
-	{
-		// sync task has been processed successfully before
-		// send a good response to the App so that it knows to remove the task
-		$response = array(
-				'id' => $note->id,
-				'usn' => $note->usn,
-				'status_code' => self::RESPONSE_STATUS_GOOD,
-				'sync_status_code' => self::SYNC_STATUS_TASK_DONE_BEFORE,
-				'error_message' => '',
-		);
-		Accessory::sendRESTResponse(201, CJSON::encode($response));
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

@@ -15,6 +15,7 @@
  * @property string $last_update_time
  * @property string $weather_id
  * @property string $location_id
+ * @property integer $attachment_number
  *
  * The followings are the available model relations:
  * @property Audio[] $audios
@@ -56,8 +57,8 @@ class Note extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, subject_id, uuid, usn, state', 'required'),
-			array('user_id, usn, state', 'numerical', 'integerOnly'=>true),
+			array('user_id, subject_id, uuid, usn, state, attachment_number', 'required'),
+			array('user_id, usn, state, attachment_number', 'numerical', 'integerOnly'=>true),
 			array('subject_id, weather_id, location_id', 'length', 'max'=>20),
 			array('uuid', 'length', 'max'=>16),
 			array('content, save_time, last_update_time', 'safe'),
@@ -105,6 +106,7 @@ class Note extends CActiveRecord
 			'last_update_time' => 'Last Update Time',
 			'weather_id' => 'Weather',
 			'location_id' => 'Location',
+			'attachment_number' => 'Attachment Number',
 		);
 	}
 

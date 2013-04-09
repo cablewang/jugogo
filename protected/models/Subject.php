@@ -7,7 +7,7 @@
  * @property string $id
  * @property string $uuid
  * @property integer $usn
- * @property string $current_avatar_id
+ * @property string $current_avatar_uuid
  * @property string $display_name
  * @property string $birthday
  * @property integer $gender
@@ -54,15 +54,14 @@ class Subject extends CActiveRecord
 		return array(
 			array('uuid, usn, type, create_time, uurn', 'required'),
 			array('usn, gender, type, privacy', 'numerical', 'integerOnly'=>true),
-			array('uuid', 'length', 'max'=>16),
-			array('current_avatar_id', 'length', 'max'=>20),
+			array('uuid, current_avatar_uuid', 'length', 'max'=>16),
 			array('display_name', 'length', 'max'=>32),
 			array('introduction', 'length', 'max'=>256),
 			array('uurn', 'length', 'max'=>64),
 			array('birthday, last_update_time', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, uuid, usn, current_avatar_id, display_name, birthday, gender, introduction, type, create_time, last_update_time, privacy, uurn', 'safe', 'on'=>'search'),
+			array('id, uuid, usn, current_avatar_uuid, display_name, birthday, gender, introduction, type, create_time, last_update_time, privacy, uurn', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -76,7 +75,6 @@ class Subject extends CActiveRecord
 		return array(
 			'avatars' => array(self::HAS_MANY, 'Avatar', 'subject_id'),
 			'notes' => array(self::HAS_MANY, 'Note', 'subject_id'),
-			'currentAvatar' => array(self::BELONGS_TO, 'Avatar', 'current_avatar_id'),
 			'users' => array(self::MANY_MANY, 'User', 'jgg_user_subject(subject_id, user_id)'),
 		);
 	}
@@ -90,7 +88,7 @@ class Subject extends CActiveRecord
 			'id' => 'ID',
 			'uuid' => 'UUID',
 			'usn' => 'USN',
-			'current_avatar_id' => 'Current Avatar',
+			'current_avatar_uuid' => 'Current Avatar UUID',
 			'display_name' => 'Display Name',
 			'birthday' => 'Birthday',
 			'gender' => 'Gender',
@@ -117,7 +115,7 @@ class Subject extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('uuid',$this->uuid,true);
 		$criteria->compare('usn',$this->usn);
-		$criteria->compare('current_avatar_id',$this->current_avatar_id,true);
+		$criteria->compare('current_avatar_uuid',$this->current_avatar_id,true);
 		$criteria->compare('display_name',$this->display_name,true);
 		$criteria->compare('birthday',$this->birthday,true);
 		$criteria->compare('gender',$this->gender);
